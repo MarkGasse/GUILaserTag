@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SearchPlayerWindow</class>
+ <widget class="QMainWindow" name="SearchPlayerWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>990</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="Titel">
+    <property name="geometry">
+     <rect>
+      <x>753</x>
+      <y>904</y>
+      <width>316</width>
+      <height>103</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lucida Calligraphy</family>
+      <pointsize>48</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>BroTag</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="CloseGUI">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>170</y>
+      <width>41</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Quit</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Group">
+    <property name="geometry">
+     <rect>
+      <x>753</x>
+      <y>1014</y>
+      <width>317</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Modern No. 20</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>                             by Do you even!</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_date">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>695</y>
+      <width>251</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>18</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelTopBar">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>640</y>
+      <width>371</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelLogo">
+    <property name="geometry">
+     <rect>
+      <x>631</x>
+      <y>903</y>
+      <width>114</width>
+      <height>149</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBoxSearch">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>50</y>
+      <width>261</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Config players</string>
+    </property>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>300</width>
+       <height>266</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayoutSearch">
+      <item>
+       <widget class="QTextBrowser" name="textBrowserS"/>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="pushButtonSearch">
+          <property name="text">
+           <string>Search players</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacerS">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonStopS">
+          <property name="text">
+           <string>Stop searching</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonStart">
+        <property name="text">
+         <string>Start Game</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>CloseGUI</sender>
+   <signal>clicked()</signal>
+   <receiver>SearchPlayerWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>467</x>
+     <y>274</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>474</x>
+     <y>342</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

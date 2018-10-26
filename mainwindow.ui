@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1252</width>
+    <height>1023</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <widget class="QPushButton" name="CloseGUI">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>400</y>
+      <width>41</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image (:/resource/image/quitButton.png);</string>
+    </property>
+    <property name="text">
+     <string>Quit</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBoxLogin">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>620</y>
+      <width>261</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Login</string>
+    </property>
+    <widget class="QPushButton" name="LoginButton">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>110</y>
+       <width>93</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>Login</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>241</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayoutLogin">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="labelUserName">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="text">
+           <string>Username</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_Username"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="labelPassword">
+          <property name="text">
+           <string>Password </string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_Password">
+          <property name="echoMode">
+           <enum>QLineEdit::Password</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QPushButton" name="pushButtonRegistreer">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>93</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>registreer</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="labelLogo">
+    <property name="geometry">
+     <rect>
+      <x>491</x>
+      <y>468</y>
+      <width>114</width>
+      <height>149</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Titel">
+    <property name="geometry">
+     <rect>
+      <x>613</x>
+      <y>469</y>
+      <width>316</width>
+      <height>103</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lucida Calligraphy</family>
+      <pointsize>48</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>BroTag</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Group">
+    <property name="geometry">
+     <rect>
+      <x>613</x>
+      <y>579</y>
+      <width>317</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Modern No. 20</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>                             by Do you even!</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelTopBar">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>205</y>
+      <width>371</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_date">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>260</y>
+      <width>251</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>18</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>Group</zorder>
+   <zorder>CloseGUI</zorder>
+   <zorder>groupBoxLogin</zorder>
+   <zorder>labelLogo</zorder>
+   <zorder>Titel</zorder>
+   <zorder>labelTopBar</zorder>
+   <zorder>Label_date</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1252</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBarLogin">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>CloseGUI</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>960</x>
+     <y>440</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>383</x>
+     <y>69</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

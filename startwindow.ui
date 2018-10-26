@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StartWindow</class>
+ <widget class="QDialog" name="StartWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>968</width>
+    <height>796</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="CloseGUI">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>0</y>
+     <width>41</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelTopBar">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>390</y>
+     <width>371</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Titel">
+   <property name="geometry">
+    <rect>
+     <x>663</x>
+     <y>654</y>
+     <width>316</width>
+     <height>103</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Lucida Calligraphy</family>
+     <pointsize>48</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>BroTag</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Label_date">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>445</y>
+     <width>251</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>18</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelLogo">
+   <property name="geometry">
+    <rect>
+     <x>541</x>
+     <y>653</y>
+     <width>114</width>
+     <height>149</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Group">
+   <property name="geometry">
+    <rect>
+     <x>663</x>
+     <y>764</y>
+     <width>317</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Modern No. 20</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>                             by Do you even!</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBoxGame">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>150</y>
+     <width>271</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Gamemode:</string>
+   </property>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>258</width>
+      <height>229</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QListWidget" name="listWidgetGame"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonStart">
+       <property name="text">
+        <string>Start</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>CloseGUI</sender>
+   <signal>clicked()</signal>
+   <receiver>StartWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>380</x>
+     <y>21</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>380</x>
+     <y>39</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
