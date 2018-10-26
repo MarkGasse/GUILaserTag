@@ -27,7 +27,7 @@ StartWindow::StartWindow(QWidget *parent) :
     ui->Group->setGeometry(w/2-175,h/2-250,360,100);
     ui->labelLogo->setGeometry(w/2-275,h/2-350,100,100);
     ui->pushButtonStart->setGeometry(w/2-25,h/2+200,50,50);
-    ui->groupBoxGame->setGeometry(w/2-160,h/2-110,320,300);
+    ui->groupBoxGame->setGeometry(w/2-140,h/2-110,280,280);
 
     //set background color window
     this->setStyleSheet("background-color: white;");
@@ -37,7 +37,7 @@ StartWindow::StartWindow(QWidget *parent) :
     ui->labelTopBar->setStyleSheet("background-color: lightblue");
     ui->Label_date->setStyleSheet("background-color: lightblue");
     ui->Group->setStyleSheet("color: red");
-    ui->pushButtonStart->setStyleSheet("background-color: lightGray");
+    ui->pushButtonStart->setStyleSheet("background-color: lightGreen");
     ui->groupBoxGame->setStyleSheet("QGroupBox { border: 2px solid black;}");
 
     //adding logo to labelLogo

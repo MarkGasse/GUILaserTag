@@ -5,5 +5,4 @@
         <file>text/password.txt</file>
         <file>text/username.txt</file>
     </qresource>
-    <qresource prefix="/text" lang=".txt"/>
 </RCC>

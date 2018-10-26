@@ -21,8 +21,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    QString fileUsername = ":/resource/text/username.txt";
-    QString filePassword = ":/resource/text/password.txt";
+    QString fileUsername = "username.txt";
+    QString filePassword = "password.txt";
     void defaultLayout(int w, int h);
     void timerFunction();
 
