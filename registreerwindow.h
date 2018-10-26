@@ -1,14 +1,14 @@
 #ifndef REGISTREERWINDOW_H
 #define REGISTREERWINDOW_H
 
-#include <QMainWindow>
+#include <QDialog>
 #include "QString"
 
 namespace Ui {
 class registreerWindow;
 }
 
-class registreerWindow : public QMainWindow
+class registreerWindow : public QDialog
 {
     Q_OBJECT
 

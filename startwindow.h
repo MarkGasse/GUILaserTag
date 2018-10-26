@@ -1,7 +1,7 @@
 #ifndef STARTWINDOW_H
 #define STARTWINDOW_H
 
-#include <QMainWindow>
+#include <QDialog>
 #include "registreerwindow.h"
 #include "searchplayerwindow.h"
 #include <QTimer>
@@ -11,7 +11,7 @@ namespace Ui {
 class StartWindow;
 }
 
-class StartWindow : public QMainWindow
+class StartWindow : public QDialog
 {
     Q_OBJECT
 

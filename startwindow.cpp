@@ -7,7 +7,7 @@
 #include "QScreen"
 
 StartWindow::StartWindow(QWidget *parent) :
-    QMainWindow(parent),
+    QDialog(parent),
     ui(new Ui::StartWindow)
 {
     ui->setupUi(this);
@@ -50,6 +50,11 @@ StartWindow::StartWindow(QWidget *parent) :
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()),this,SLOT(timerFunction()));
     timer->start(1000);
+
+
+    //add item to list widget
+    QListWidgetItem *item = new QListWidgetItem(QIcon(":/resource/image/images.png"), "FreeforALL");
+    ui->listWidgetGame->addItem(item);
 
 }
 

@@ -3,7 +3,7 @@
 #include "mainwindow.h"
 
 registreerWindow::registreerWindow(QWidget *parent) :
-    QMainWindow(parent),
+    QDialog(parent),
     ui(new Ui::registreerWindow)
 {
     ui->setupUi(this);

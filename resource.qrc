@@ -4,5 +4,6 @@
         <file>image/quitButton.png</file>
         <file>text/password.txt</file>
         <file>text/username.txt</file>
+        <file>image/images.png</file>
     </qresource>
 </RCC>
