@@ -1,5 +1,5 @@
-#include "leaderboardWindow.h"
-#include "ui_leaderboardWindow.h"
+#include "leaderboardwindow.h"
+#include "ui_leaderboardwindow.h"
 #include <QFile>
 #include <QTextStream>
 #include <QMessageBox>
@@ -21,8 +21,20 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     // get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect rec = screen->geometry();
-    int w = rec.width() ;
+    int w = rec.width();
     int h = rec.height();
+
+    ui->CloseGUI->setGeometry(w-50,0,50,50);
+    ui->Label_date->setGeometry(w-400,0,350,50);
+    ui->labelTopBar->setGeometry(0,0,w-50,50);
+    ui->groupBox->setGeometry(w/2-350,h/2-280,700,560);
+
+    ui->Label_date->setStyleSheet("background-color: lightblue");
+    ui->CloseGUI->setStyleSheet("background-color: red");
+    ui->labelTopBar->setStyleSheet("background-color: lightblue");
+    ui->groupBox->setStyleSheet("QGroupBox { border: 2px solid black;}");
+
+    this->setStyleSheet("background-color: white;");
 
     ui->pushButton_3->setStyleSheet("background-color: lightGreen");
     ui->pushButton_4->setStyleSheet("background-color: red");
@@ -45,7 +57,7 @@ void leaderboardWindow::on_pushButton_3_clicked() {
         return;
     }
 
-    timer1->start(100);
+    timer1->start(1000);
 
     //do file i/o stuff
     QFile file("C:\\test.txt");

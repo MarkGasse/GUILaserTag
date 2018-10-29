@@ -17,73 +17,142 @@
    <property name="enabled">
     <bool>true</bool>
    </property>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QLabel" name="Label_date">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>190</y>
-      <width>121</width>
-      <height>61</height>
+      <x>720</x>
+      <y>60</y>
+      <width>55</width>
+      <height>16</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>16</pointsize>
-     </font>
     </property>
     <property name="text">
-     <string>STOP</string>
+     <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="CloseGUI">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>190</y>
-      <width>101</width>
-      <height>61</height>
+      <x>410</x>
+      <y>40</y>
+      <width>93</width>
+      <height>28</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>16</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton rgb(0, 255, 0);</string>
     </property>
     <property name="text">
-     <string>START</string>
+     <string>QUIT</string>
     </property>
    </widget>
-   <widget class="QTimeEdit" name="timeEdit">
+   <widget class="QLabel" name="labelTopBar">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>190</y>
-      <width>131</width>
-      <height>61</height>
+      <x>890</x>
+      <y>110</y>
+      <width>55</width>
+      <height>16</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>20</pointsize>
-     </font>
+    <property name="text">
+     <string/>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser_2">
+   <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>260</y>
-      <width>491</width>
-      <height>381</height>
+      <x>750</x>
+      <y>40</y>
+      <width>701</width>
+      <height>601</height>
      </rect>
     </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>30</y>
+       <width>101</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton rgb(0, 255, 0);</string>
+     </property>
+     <property name="text">
+      <string>START</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_4">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>30</y>
+       <width>121</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>STOP</string>
+     </property>
+    </widget>
+    <widget class="QTimeEdit" name="timeEdit">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>30</y>
+       <width>131</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowser_2">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>100</y>
+       <width>491</width>
+       <height>381</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>CloseGUI</sender>
+   <signal>clicked()</signal>
+   <receiver>leaderboardWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>785</x>
+     <y>295</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>853</x>
+     <y>295</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
