@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!-- Written by QtCreator 4.7.2, 2018-10-29T13:17:35. -->
+=======
+<!-- Written by QtCreator 4.7.1, 2018-10-29T12:28:05. -->
+>>>>>>> d36ca136ee9b1c9377109a849503ef80d6fc0918
 =======
 <!-- Written by QtCreator 4.7.1, 2018-10-29T12:28:05. -->
 >>>>>>> d36ca136ee9b1c9377109a849503ef80d6fc0918
@@ -295,8 +299,13 @@
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">GUI-LaserTag</value>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/E5470/Documents/GitHub/GUILaserTag/GUI-LaserTag.pro</value>
+=======
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">GUI-LaserTag2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/Mark.G/Documents/GitHub/GUILaserTag/GUI-LaserTag.pro</value>
+>>>>>>> d36ca136ee9b1c9377109a849503ef80d6fc0918
 =======
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">GUI-LaserTag2</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/Mark.G/Documents/GitHub/GUILaserTag/GUI-LaserTag.pro</value>
@@ -306,7 +315,11 @@
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">GUI-LaserTag.pro</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory"></value>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">C:/Users/E5470/Documents/GitHub/build-GUI-LaserTag-Desktop_Qt_5_11_2_MinGW_32bit-Debug</value>
+=======
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">C:/Users/Mark.G/Documents/build-GUI-LaserTag-Desktop_Qt_5_11_2_MinGW_32bit-Debug</value>
+>>>>>>> d36ca136ee9b1c9377109a849503ef80d6fc0918
 =======
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">C:/Users/Mark.G/Documents/build-GUI-LaserTag-Desktop_Qt_5_11_2_MinGW_32bit-Debug</value>
 >>>>>>> d36ca136ee9b1c9377109a849503ef80d6fc0918
