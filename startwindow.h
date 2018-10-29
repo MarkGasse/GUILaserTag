@@ -2,8 +2,8 @@
 #define STARTWINDOW_H
 
 #include <QDialog>
-#include "registreerwindow.h"
 #include "searchplayerwindow.h"
+#include "creategm.h"
 #include <QTimer>
 
 
@@ -24,10 +24,15 @@ public slots:
 private slots:
     void on_pushButtonStart_clicked();
 
+    void on_pushButtonDelete_clicked();
+
+    void on_pushButtonCreate_clicked();
+
 private:
     Ui::StartWindow *ui;
     QTimer *timer;
     SearchPlayerWindow *searchW;
+    CreateGM *CreateW;
 
 };
 

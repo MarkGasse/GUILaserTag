@@ -30,19 +30,22 @@ SOURCES += \
         mainwindow.cpp \
     startwindow.cpp \
     registreerwindow.cpp \
-    searchplayerwindow.cpp
+    searchplayerwindow.cpp \
+    creategm.cpp
 
 HEADERS += \
         mainwindow.h \
     startwindow.h \
     registreerwindow.h \
-    searchplayerwindow.h
+    searchplayerwindow.h \
+    creategm.h
 
 FORMS += \
         mainwindow.ui \
     startwindow.ui \
     registreerwindow.ui \
-    searchplayerwindow.ui
+    searchplayerwindow.ui \
+    creategm.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -27,8 +27,8 @@ public:
     void timerFunction();
 
 public slots:
-    void write(QString Filename, QString text);
-    QString read(QString Filename, int i);
+    void write(QString Filename, QString text, bool status);
+    QString read(QString Filename);
 
 
 private slots:
