@@ -1,5 +1,7 @@
 #include "leaderboardwindow.h"
 #include "ui_leaderboardwindow.h"
+#include "startwindow.h"
+#include "searchplayerwindow.h"
 #include <QFile>
 #include <QTextStream>
 #include <QMessageBox>
@@ -25,20 +27,32 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     int h = rec.height();
 
     ui->CloseGUI->setGeometry(w-50,0,50,50);
+    ui->pushButtonBack->setGeometry(150,0,150,50);
+    ui->pushButtonBACK2->setGeometry(0,0,150,50);
     ui->Label_date->setGeometry(w-400,0,350,50);
     ui->labelTopBar->setGeometry(0,0,w-50,50);
-    ui->groupBox->setGeometry(w/2-350,h/2-280,700,560);
+    ui->groupBox->setGeometry(w/2+250,h/2-280,625,600);
+    ui->groupBox_2->setGeometry(w/2-235,20,470,80);
+    ui->groupBoxGIF->setGeometry(w/2-850,h/2-280,570,200);
+    ui->groupBoxEvents->setGeometry(w/2-850,h/2,570,400);
 
+    ui->pushButtonBack->setStyleSheet("background-color: lightGray");
+    ui->pushButtonBACK2->setStyleSheet("background-color: Gray");
+    ui->groupBox_2->setStyleSheet("Background-color: lightblue");
     ui->Label_date->setStyleSheet("background-color: lightblue");
     ui->CloseGUI->setStyleSheet("background-color: red");
     ui->labelTopBar->setStyleSheet("background-color: lightblue");
-    ui->groupBox->setStyleSheet("QGroupBox { border: 2px solid black;}");
+    ui->groupBox->setStyleSheet("QGroupBox { border: 6px solid black;}");
+    ui->groupBoxEvents->setStyleSheet("QGroupBox { border: 6px solid black;}");
+    ui->groupBoxGIF->setStyleSheet("QGroupBox { border: 6px solid black;}");
+
+
 
     this->setStyleSheet("background-color: white;");
 
     ui->pushButton_3->setStyleSheet("background-color: lightGreen");
     ui->pushButton_4->setStyleSheet("background-color: red");
-    ui->textBrowser_2->setStyleSheet(" { border: 1px solid black;}");
+    ui->textBrowser_2->setStyleSheet(" { border: 4px solid black;}");
     ui->centralWidget->setGeometry(500,500,500,500);
 
     connect (timer1, SIGNAL(timeout()),this,SLOT(timerupdater()));
@@ -72,10 +86,6 @@ void leaderboardWindow::on_pushButton_3_clicked() {
     //ui->textBrowser_2->setText(in.readAll());
 }
 
-void leaderboardWindow::on_pushButton_clicked() {
-
-}
-
 void leaderboardWindow::on_pushButton_4_clicked() {
 
     //do timer stuff
@@ -102,4 +112,21 @@ void leaderboardWindow::timerupdater() {
     }
 
     ui->timeEdit->setTime(QTime(minutes, seconds));
+}
+
+void leaderboardWindow::on_pushButtonBack_clicked()
+{
+    close();
+    SearchPlayerWindow *SPW;
+    SPW = new SearchPlayerWindow(this);
+    SPW->showFullScreen();
+}
+
+void leaderboardWindow::on_pushButtonBACK2_clicked()
+{
+    close();
+    StartWindow *SW;
+    SW = new StartWindow(this);
+    SW->showFullScreen();
+
 }
