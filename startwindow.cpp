@@ -102,75 +102,34 @@ void StartWindow::on_pushButtonDelete_clicked()
     // write all gamemodes except the item you want ot delete to TmpGameModeList
     MainWindow W;
 
-    int m= 0;
     QFile file("GAMEMODES");
 
-    file.open(QIODevice::ReadOnly);
+    file.open(QIODevice::ReadOnly); //open gamemodes
     QTextStream in(&file);
 
 
     while(!in.atEnd()){
-        QString item = W.read(in.readLine());
+        QString item = in.readLine();
 
         if(item != selectedItem){
-           W.write("TmpGameModeList",item,1);
+           W.write("TmpGameModeList",item,1); //open and close tmpgamemodelist
         }
-
-        m++;
     }
+        file.close(); //close gamemodes, tmp and gamemodes now both closed
 
-        file.close();
-
-         W.write("GAMEMODES","",0); // empty file
-         int m2= 0;
+         W.write("GAMEMODES","",0); //open and close gamemodes
         QFile file2("TmpGameModeList");
 
-        file2.open(QIODevice::ReadOnly);
+        file2.open(QIODevice::ReadOnly); //open tmpgamemodelist
         QTextStream in2(&file2);
         while(!in2.atEnd()){
-            QString item = W.read(in2.readLine());
+            QString item = in2.readLine();
 
-            if(item != selectedItem){
-               W.write("GAMEMODES",item,1);
-            }
-
-            m2++;
+               W.write("GAMEMODES",item,1); //open and close gamemodes
         }
-            file2.close();
+            file2.close(); //close tmpgamemodelist, both are now closed
 
-
-     /*   int m= 0;
-        QTemporaryFile tmpGameMode;
-        if(tmpGameMode.open()){
-
-            QString tmp = tmpGameMode.fileName();
-            QTextStream in(&tmp);
-
-            QFile file("GAMEMODES");
-            QTextStream in2(&file);
-
-            while(!in2.atEnd()){
-                QString item = W.read(in2.readLine());
-
-                if(item != selectedItem){
-                   W.write(tmp,item,1);
-                }
-                m++;
-            }
-
-
-            m = 0;
-
-            while(!in.atEnd()){
-                QString item = W.read(in.readLine());
-
-
-                   W.write("GAMEMODES",item,0);
-
-                m++;
-            }*/
-
-       // }
+            W.write("TmpGameModeList", "", 0); //open and close tmpga
 }
 
 //Open create new gamemode window

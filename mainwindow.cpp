@@ -117,19 +117,23 @@ void MainWindow::write(QString Filename, QString text, bool status)
 {
     // open myfile and check if file is open
     QFile myfile(Filename);
-    if(!myfile.open(QFile::WriteOnly | QFile::Text | QFile::Append) && status == 1){
-        qDebug() << "could not write to file: " << Filename << ".\n";
-        return;
-    }
-    if(!myfile.open(QFile::WriteOnly | QFile::Text) && status == 0){
-        qDebug() << "could not write to file: " << Filename << ".\n";
-        return;
-    }
-    // write to myfile
-    QTextStream out(&myfile);
-    out << text << "\n";
 
-    myfile.flush();
+    if(status)
+    {
+        myfile.open(QFile::WriteOnly | QFile::Text | QFile::Append);
+        if(!myfile.isOpen()) qDebug() << "file not open";
+
+        // write to myfile
+        QTextStream out(&myfile);
+        out << text << "\n";
+
+        myfile.flush();
+
+    } else {
+        myfile.open(QFile::WriteOnly | QFile::Truncate | QFile::Text);
+        if(!myfile.isOpen()) qDebug() << "file not open";
+    }
+
     // close myfile
     myfile.close();
 }

@@ -90,6 +90,7 @@ void SearchPlayerWindow::on_pushButtonStopS_clicked()
 
 void SearchPlayerWindow::on_pushButtonStart_clicked()
 {
+    close();
     lbw = new leaderboardWindow(this);
     lbw->showFullScreen();
 }
