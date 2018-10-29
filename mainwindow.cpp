@@ -113,11 +113,15 @@ void MainWindow::timerFunction()
     ui->Label_date->setText(date_text);
 }
 
-void MainWindow::write(QString Filename, QString text)
+void MainWindow::write(QString Filename, QString text, bool status)
 {
     // open myfile and check if file is open
     QFile myfile(Filename);
-    if(!myfile.open(QFile::WriteOnly | QFile::Text | QFile::Append)){
+    if(!myfile.open(QFile::WriteOnly | QFile::Text | QFile::Append) && status == 1){
+        qDebug() << "could not write to file: " << Filename << ".\n";
+        return;
+    }
+    if(!myfile.open(QFile::WriteOnly | QFile::Text) && status == 0){
         qDebug() << "could not write to file: " << Filename << ".\n";
         return;
     }
@@ -130,7 +134,7 @@ void MainWindow::write(QString Filename, QString text)
     myfile.close();
 }
 
-QString MainWindow::read(QString Filename, int i)
+QString MainWindow::read(QString Filename)
 {
     // open myfile and check if file is open
     QFile myfile(Filename);

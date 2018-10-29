@@ -5,6 +5,7 @@
 #include <QDateTime>
 #include "QRect"
 #include "QScreen"
+#include "QTemporaryFile"
 
 StartWindow::StartWindow(QWidget *parent) :
     QDialog(parent),
@@ -36,6 +37,8 @@ StartWindow::StartWindow(QWidget *parent) :
     ui->CloseGUI->setStyleSheet("background-color: red");
     ui->labelTopBar->setStyleSheet("background-color: lightblue");
     ui->Label_date->setStyleSheet("background-color: lightblue");
+    ui->pushButtonCreate->setStyleSheet("background-color: lightblue");
+    ui->pushButtonDelete->setStyleSheet("background-color: red");
     ui->Group->setStyleSheet("color: red");
     ui->pushButtonStart->setStyleSheet("background-color: lightGreen");
     ui->groupBoxGame->setStyleSheet("QGroupBox { border: 2px solid black;}");
@@ -51,10 +54,19 @@ StartWindow::StartWindow(QWidget *parent) :
     connect(timer, SIGNAL(timeout()),this,SLOT(timerFunction()));
     timer->start(1000);
 
+    // read gamemodes and add to list widget
+    MainWindow W;
+    int m= 0;
+    QFile file("GAMEMODES");
 
-    //add item to list widget
-    QListWidgetItem *item = new QListWidgetItem(QIcon(":/resource/image/images.png"), "FreeforALL");
-    ui->listWidgetGame->addItem(item);
+    file.open(QIODevice::ReadOnly);
+    QTextStream in(&file);
+    while(!in.atEnd()){
+        QListWidgetItem *item = new QListWidgetItem(QIcon(":/resource/image/images.png"),W.read(in.readLine()));
+        ui->listWidgetGame->addItem(item);
+        m++;
+    }
+        file.close();
 
 }
 
@@ -72,10 +84,100 @@ void StartWindow::timerFunction()
 }
 
 
-
+// open searchplayerwindow
 void StartWindow::on_pushButtonStart_clicked()
 {
     close();
     searchW = new SearchPlayerWindow(this);
     searchW->showFullScreen();
+}
+
+// delete selected item from listwidget
+void StartWindow::on_pushButtonDelete_clicked()
+{
+
+    QString selectedItem = ui->listWidgetGame->currentItem()->text();
+    delete ui->listWidgetGame->currentItem();
+
+    // write all gamemodes except the item you want ot delete to TmpGameModeList
+    MainWindow W;
+
+    int m= 0;
+    QFile file("GAMEMODES");
+
+    file.open(QIODevice::ReadOnly);
+    QTextStream in(&file);
+
+
+    while(!in.atEnd()){
+        QString item = W.read(in.readLine());
+
+        if(item != selectedItem){
+           W.write("TmpGameModeList",item,1);
+        }
+
+        m++;
+    }
+
+        file.close();
+
+         W.write("GAMEMODES","",0); // empty file
+         int m2= 0;
+        QFile file2("TmpGameModeList");
+
+        file2.open(QIODevice::ReadOnly);
+        QTextStream in2(&file2);
+        while(!in2.atEnd()){
+            QString item = W.read(in2.readLine());
+
+            if(item != selectedItem){
+               W.write("GAMEMODES",item,1);
+            }
+
+            m2++;
+        }
+            file2.close();
+
+
+     /*   int m= 0;
+        QTemporaryFile tmpGameMode;
+        if(tmpGameMode.open()){
+
+            QString tmp = tmpGameMode.fileName();
+            QTextStream in(&tmp);
+
+            QFile file("GAMEMODES");
+            QTextStream in2(&file);
+
+            while(!in2.atEnd()){
+                QString item = W.read(in2.readLine());
+
+                if(item != selectedItem){
+                   W.write(tmp,item,1);
+                }
+                m++;
+            }
+
+
+            m = 0;
+
+            while(!in.atEnd()){
+                QString item = W.read(in.readLine());
+
+
+                   W.write("GAMEMODES",item,0);
+
+                m++;
+            }*/
+
+       // }
+}
+
+//Open create new gamemode window
+void StartWindow::on_pushButtonCreate_clicked()
+{
+    close();
+    CreateW = new CreateGM(this);
+    CreateW->show();
+
 }

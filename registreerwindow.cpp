@@ -35,8 +35,8 @@ void registreerWindow::on_pushButtonRegistreer_clicked()
 
     if(password == password2 && code == "doyoueven" && username != "" && password != ""){
       MainWindow wi;
-      wi.write(wi.filePassword, password);
-      wi.write(wi.fileUsername, username);
+      wi.write(wi.filePassword, password,1);
+      wi.write(wi.fileUsername, username,1);
       hide();
     }
 
