@@ -6,6 +6,8 @@
 #include "QRect"
 #include "QScreen"
 #include "QTemporaryFile"
+#include <cstdio>
+#include "mainwindow.h"
 
 StartWindow::StartWindow(QWidget *parent) :
     QDialog(parent),
@@ -56,15 +58,14 @@ StartWindow::StartWindow(QWidget *parent) :
 
     // read gamemodes and add to list widget
     MainWindow W;
-    int m= 0;
     QFile file("GAMEMODES");
 
     file.open(QIODevice::ReadOnly);
     QTextStream in(&file);
-    while(!in.atEnd()){
-        QListWidgetItem *item = new QListWidgetItem(QIcon(":/resource/image/images.png"),W.read(in.readLine()));
+    while(!in.atEnd())
+    {
+        QListWidgetItem *item = new QListWidgetItem(QIcon(":/resource/image/images.png"),in.readLine());
         ui->listWidgetGame->addItem(item);
-        m++;
     }
         file.close();
 
@@ -87,6 +88,11 @@ void StartWindow::timerFunction()
 // open searchplayerwindow
 void StartWindow::on_pushButtonStart_clicked()
 {
+    QString selectedItem = ui->listWidgetGame->currentItem()->text();
+
+    game_mode = selectedItem;
+    qDebug() << game_mode;
+
     close();
     searchW = new SearchPlayerWindow(this);
     searchW->showFullScreen();
@@ -113,6 +119,10 @@ void StartWindow::on_pushButtonDelete_clicked()
 
         if(item != selectedItem){
            W.write("TmpGameModeList",item,1); //open and close tmpgamemodelist
+        } else {
+            std::string file_to_remove = item.toStdString();
+            const char *f = file_to_remove.c_str();
+            if(std::remove(f)) qDebug() << "deleted";
         }
     }
         file.close(); //close gamemodes, tmp and gamemodes now both closed

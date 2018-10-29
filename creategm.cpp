@@ -23,7 +23,7 @@ CreateGM::CreateGM(QWidget *parent) :
 
     //set times
     for(int t = 5; t <= 60; t+= 5){
-        ui->comboBoxTime->addItem(QString::number(t) + " minuten");
+        ui->comboBoxTime->addItem(QString::number(t));
     }
 
 }

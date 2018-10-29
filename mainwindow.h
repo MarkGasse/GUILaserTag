@@ -10,6 +10,8 @@
 #include "QString"
 #include "QTextStream"
 
+extern QString game_mode;
+
 namespace Ui {
 class MainWindow;
 }

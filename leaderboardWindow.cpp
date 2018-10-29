@@ -11,6 +11,7 @@
 #include <QBasicTimer>
 #include <QtDebug>
 #include <QScreen>
+#include "mainwindow.h"
 
 static QTimer *timer1 = new QTimer();
 
@@ -46,14 +47,28 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     ui->groupBoxEvents->setStyleSheet("QGroupBox { border: 6px solid black;}");
     ui->groupBoxGIF->setStyleSheet("QGroupBox { border: 6px solid black;}");
 
-
-
     this->setStyleSheet("background-color: white;");
+    ui->timeEdit->setDisplayFormat("mm:ss");
 
     ui->pushButton_3->setStyleSheet("background-color: lightGreen");
     ui->pushButton_4->setStyleSheet("background-color: red");
     ui->textBrowser_2->setStyleSheet(" { border: 4px solid black;}");
     ui->centralWidget->setGeometry(500,500,500,500);
+
+    QFile gm(game_mode);
+    QString game_time;
+
+    gm.open(QIODevice::ReadOnly);
+
+    QTextStream gm_stream(&gm);
+    while(!gm_stream.atEnd())
+    {
+        game_time = gm_stream.readLine();
+    }
+
+    int minutes = game_time.toInt();
+
+    ui->timeEdit->setTime(QTime(0, minutes, 0));
 
     connect (timer1, SIGNAL(timeout()),this,SLOT(timerupdater()));
 
@@ -67,7 +82,7 @@ void leaderboardWindow::on_pushButton_3_clicked() {
 
     //start timer to keep time, timer sends events
     auto current_time = ui->timeEdit->time();
-    if(current_time.hour() == 0 && current_time.minute() == 0) {
+    if(current_time.second() == 0 && current_time.minute() == 0) {
         return;
     }
 
@@ -97,8 +112,8 @@ void leaderboardWindow::on_pushButton_4_clicked() {
 void leaderboardWindow::timerupdater() {
 
     auto input_time = ui->timeEdit->time();
-    int minutes = input_time.hour();
-    int seconds = input_time.minute();
+    int minutes = input_time.minute();
+    int seconds = input_time.second();
 
     if(seconds == 0) {
         seconds = 59;
@@ -111,7 +126,8 @@ void leaderboardWindow::timerupdater() {
         on_pushButton_4_clicked();
     }
 
-    ui->timeEdit->setTime(QTime(minutes, seconds));
+
+    ui->timeEdit->setTime(QTime(0, minutes, seconds));
 }
 
 void leaderboardWindow::on_pushButtonBack_clicked()

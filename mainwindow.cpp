@@ -9,6 +9,8 @@
 #include "QString"
 #include "QTextStream"
 
+QString game_mode = " ";
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -26,21 +28,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     defaultLayout(w,h);
 
-    // set position on gui
-    //(X,Y,width,height)
-    //ui->CloseGUI->setGeometry(w-50,0,50,50);
-    //ui->labelTopBar->setGeometry(0,0,w-50,50);
-    //ui->Label_date->setGeometry(w-400,0,350,50);
     ui->groupBoxLogin->setGeometry(w/2-132,h/2-100,275,175);
-    //ui->Titel->setGeometry(w/2-175,h/2-350,350,100);
-    //ui->Group->setGeometry(w/2-175,h/2-250,360,100);
-    //ui->labelLogo->setGeometry(w/2-275,h/2-350,100,100);
 
-    //set background color window
-    //this->setStyleSheet("background-color: white;");
-
-    // set colors
-    //ui->CloseGUI->setStyleSheet("background-color: red");
     ui->LoginButton->setStyleSheet("background-color: lightGreen");
     ui->pushButtonRegistreer->setStyleSheet("background-color: lightBlue");
     ui->lineEdit_Password->setStyleSheet("background-color: white");
@@ -48,18 +37,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->labelTopBar->setStyleSheet("background-color: lightblue");
     ui->Label_date->setStyleSheet("background-color: lightblue");
     ui->groupBoxLogin->setStyleSheet("QGroupBox { border: 2px solid black;}");
-    //ui->Group->setStyleSheet("color: red");
-
-    //adding logo to labelLogo
-    //QPixmap LogoPix(":/resource/image/LogoLaser.jpg");
-    //int LogoWidth =  ui->labelLogo->width();
-    //int LogoHeight=  ui->labelLogo->height();
-    //ui->labelLogo->setPixmap(LogoPix.scaled(LogoWidth,LogoHeight,Qt::KeepAspectRatio));
-
-    //timer
-    //timer = new QTimer(this);
-    //connect(timer, SIGNAL(timeout()),this,SLOT(timerFunction()));
-    //timer->start(1000);
 }
 
 MainWindow::~MainWindow()
@@ -69,12 +46,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::defaultLayout(int w, int h)
 {
-    // get screen size
-    //QScreen *screen = QGuiApplication::primaryScreen();
-    //QRect rec = screen->geometry();
-    //int w = rec.width() ;
-    //int h = rec.height();
-
     // set position on gui
     //(X,Y,width,height)
     ui->CloseGUI->setGeometry(w-50,0,50,50);
