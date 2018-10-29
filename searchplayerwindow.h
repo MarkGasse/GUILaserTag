@@ -1,6 +1,7 @@
 #ifndef SEARCHPLAYERWINDOW_H
 #define SEARCHPLAYERWINDOW_H
 
+#include "leaderboardwindow.h"
 #include <QMainWindow>
 #include <QTimer>
 #include <QString>
@@ -28,6 +29,7 @@ private slots:
 
 private:
     Ui::SearchPlayerWindow *ui;
+    leaderboardWindow *lbw;
     QTimer *timer;
     QString status;
 };
