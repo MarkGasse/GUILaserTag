@@ -9,6 +9,7 @@
 #include "QFile"
 #include "QString"
 #include "QTextStream"
+#include "QKeyEvent"
 
 extern QString game_mode;
 
@@ -26,6 +27,8 @@ public:
     QString fileUsername = "username.txt";
     QString filePassword = "password.txt";
     void defaultLayout(int w, int h);
+protected:
+    void keyPressEvent(QKeyEvent *event);
 
 
 public slots:
@@ -44,6 +47,7 @@ private:
     registreerWindow *registreerW;
     QTimer *timer;
     bool MBoxStatus;
+
 };
 
 #endif // MAINWINDOW_H

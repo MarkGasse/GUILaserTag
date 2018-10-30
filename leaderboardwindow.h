@@ -16,6 +16,7 @@ public:
 
     explicit leaderboardWindow(QWidget *parent = nullptr);
     ~leaderboardWindow();
+    void writeToEventBox(QString message, QString textColor, QString type);
 
 private slots:
     void on_pushButton_3_clicked();
@@ -35,6 +36,7 @@ private:
     QString Animations[1];
     int arrayPos = 0;
     QMovie *GIF = new QMovie("");
+    bool stateTime = 1;
 };
 
 #endif // LEADERBOARDWINDOW_H

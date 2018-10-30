@@ -178,7 +178,7 @@
     <property name="title">
      <string>Events</string>
     </property>
-    <widget class="QTextBrowser" name="textBrowser">
+    <widget class="QTextBrowser" name="textBrowserEvents">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -186,6 +186,13 @@
        <width>551</width>
        <height>371</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+       <kerning>false</kerning>
+      </font>
      </property>
     </widget>
    </widget>

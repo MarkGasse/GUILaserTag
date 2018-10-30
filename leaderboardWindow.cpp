@@ -44,6 +44,7 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     ui->groupBoxEvents->setGeometry(w/2-850,h/2,570,400);
     ui->labelGM->setGeometry(w/2-300,0,600,50);
 
+    ui->label->setStyleSheet("background-color: lightblue");
     ui->pushButtonBack->setStyleSheet("background-color: lightGray");
     ui->pushButtonBACK2->setStyleSheet("background-color: Gray");
     ui->groupBox_2->setStyleSheet("Background-color: white");
@@ -54,6 +55,7 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     ui->groupBoxEvents->setStyleSheet("QGroupBox { border: 6px solid black;}");
     ui->groupBoxGIF->setStyleSheet("QGroupBox { border: 6px solid black;}");
     ui->labelGM->setStyleSheet("background-color: lightBlue");
+    ui->textBrowserEvents->setStyleSheet("background-color: lightBlue ");
 
     this->setStyleSheet("background-color: white;");
     ui->timeEdit->setDisplayFormat("mm:ss");
@@ -95,35 +97,49 @@ leaderboardWindow::~leaderboardWindow() {
     delete ui;
 }
 
+void leaderboardWindow::writeToEventBox(QString message, QString textColor, QString type)
+{
+    ui->textBrowserEvents->setTextColor(textColor);
+    //QString boldtext = "<b>" + type + message + "</b>";
+    ui->textBrowserEvents->append((type + message));
+}
+
 void leaderboardWindow::on_pushButton_3_clicked() {
+    if(stateTime == 1){
+        //start timer to keep time, timer sends events
+        auto current_time = ui->timeEdit->time();
+        if(current_time.second() == 0 && current_time.minute() == 0) {
+            return;
+        }
+        writeToEventBox("game started!","Green","Arduino: ");
+        timer1->start(1000);
 
-    //start timer to keep time, timer sends events
-    auto current_time = ui->timeEdit->time();
-    if(current_time.second() == 0 && current_time.minute() == 0) {
-        return;
+        //do file i/o stuff
+        QFile file("C:\\test.txt");
+        file.open(QIODevice::ReadOnly);
+        QTextStream in(&file);
+
+        while(!in.atEnd())
+        {
+            QString line = in.readLine();
+            ui->textBrowser_2->append(line);
+        }
+        //ui->textBrowser_2->setText(in.readAll());
+        stateTime = 0;
     }
 
-    timer1->start(1000);
-
-    //do file i/o stuff
-    QFile file("C:\\test.txt");
-    file.open(QIODevice::ReadOnly);
-    QTextStream in(&file);
-
-    while(!in.atEnd())
-    {
-        QString line = in.readLine();
-        ui->textBrowser_2->append(line);
-    }
-    //ui->textBrowser_2->setText(in.readAll());
 }
 
 void leaderboardWindow::on_pushButton_4_clicked() {
+    if(stateTime == 0){
+        //do timer stuff
+        timer1->stop();
+        writeToEventBox("game is paused!","purple","Arduino: ");
+        //QTime zero_time(0,0);
+        //ui->timeEdit->setTime(zero_time);
+        stateTime = 1;
+    }
 
-    //do timer stuff
-    timer1->stop();
-    //QTime zero_time(0,0);
-    //ui->timeEdit->setTime(zero_time);
 }
 
 void leaderboardWindow::timerupdater() {
@@ -140,7 +156,8 @@ void leaderboardWindow::timerupdater() {
     }
 
     if(seconds == 0 && minutes == 0) {
-        on_pushButton_4_clicked();
+        writeToEventBox("game has ended!","red","Arduino: ");
+        timer1->stop();
     }
 
 

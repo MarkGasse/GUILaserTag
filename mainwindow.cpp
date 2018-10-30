@@ -9,6 +9,7 @@
 #include "QString"
 #include "QTextStream"
 #include "QMessageBox"
+#include "QKeyEvent"
 
 QString game_mode = " ";
 
@@ -75,6 +76,14 @@ void MainWindow::defaultLayout(int w, int h)
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()),this,SLOT(timerFunction()));
     timer->start(1000);
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Return){
+
+        on_LoginButton_clicked();
+    }
 }
 
 void MainWindow::timerFunction()
