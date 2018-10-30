@@ -26,12 +26,12 @@ public:
     QString fileUsername = "username.txt";
     QString filePassword = "password.txt";
     void defaultLayout(int w, int h);
-    void timerFunction();
+
 
 public slots:
     void write(QString Filename, QString text, bool status);
     QString read(QString Filename);
-
+    void timerFunction();
 
 private slots:
     void on_LoginButton_clicked();

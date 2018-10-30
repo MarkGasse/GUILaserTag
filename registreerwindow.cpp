@@ -1,6 +1,7 @@
 #include "registreerwindow.h"
 #include "ui_registreerwindow.h"
 #include "mainwindow.h"
+#include "QMessageBox"
 
 registreerWindow::registreerWindow(QWidget *parent) :
     QDialog(parent),
@@ -34,6 +35,7 @@ void registreerWindow::on_pushButtonRegistreer_clicked()
     QString code = ui->lineEditCode ->text();
 
     if(password == password2 && code == "doyoueven" && username != "" && password != ""){
+      QMessageBox::information(this,tr("Gelukt!"),tr("Registratie succesvol."),QMessageBox::Close);
       MainWindow wi;
       wi.write(wi.filePassword, password,1);
       wi.write(wi.fileUsername, username,1);

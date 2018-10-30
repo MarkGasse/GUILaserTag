@@ -4,6 +4,7 @@
 #include <QDateTime>
 #include "QRect"
 #include "QScreen"
+#include "startwindow.h"
 
 SearchPlayerWindow::SearchPlayerWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -19,6 +20,7 @@ SearchPlayerWindow::SearchPlayerWindow(QWidget *parent) :
 
     // set position on gui
     //(X,Y,width,height)
+    ui->pushButton->setGeometry(0,0,150,50);
     ui->CloseGUI->setGeometry(w-50,0,50,50);
     ui->labelTopBar->setGeometry(0,0,w-400,50);
     ui->Label_date->setGeometry(w-400,0,350,50);
@@ -40,6 +42,7 @@ SearchPlayerWindow::SearchPlayerWindow(QWidget *parent) :
     ui->pushButtonStart->setStyleSheet("background-color: lightGreen");
     ui->pushButtonSearch->setStyleSheet("background-color: lightBlue");
     ui->pushButtonStopS->setStyleSheet("background-color: Red");
+    ui->pushButton->setStyleSheet("background-color: lightGray");
 
     //adding logo to labelLogo
     QPixmap LogoPix(":/resource/image/LogoLaser.jpg");
@@ -93,4 +96,12 @@ void SearchPlayerWindow::on_pushButtonStart_clicked()
     close();
     lbw = new leaderboardWindow(this);
     lbw->showFullScreen();
+}
+
+void SearchPlayerWindow::on_pushButton_clicked()
+{
+    close();
+    StartWindow *SW;
+    SW = new StartWindow(this);
+    SW->showFullScreen();
 }

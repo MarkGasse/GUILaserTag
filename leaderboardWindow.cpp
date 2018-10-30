@@ -38,10 +38,11 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     ui->Label_date->setGeometry(w-400,0,350,50);
     ui->labelTopBar->setGeometry(0,0,w-50,50);
     ui->groupBox->setGeometry(w/2+250,h/2-280,625,600);
-    ui->groupBox_2->setGeometry(w/2-235,20,470,80);
+    ui->groupBox_2->setGeometry(w/2-235,60,470,80);
     ui->groupBoxGIF->setGeometry(w/2-850,h/2-280,570,200);
     ui->label->setGeometry(w/2-840,h/2-270,510,190);
     ui->groupBoxEvents->setGeometry(w/2-850,h/2,570,400);
+    ui->labelGM->setGeometry(w/2-300,0,600,60);
 
     ui->pushButtonBack->setStyleSheet("background-color: lightGray");
     ui->pushButtonBACK2->setStyleSheet("background-color: Gray");
@@ -52,6 +53,7 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     ui->groupBox->setStyleSheet("QGroupBox { border: 6px solid black;}");
     ui->groupBoxEvents->setStyleSheet("QGroupBox { border: 6px solid black;}");
     ui->groupBoxGIF->setStyleSheet("QGroupBox { border: 6px solid black;}");
+    ui->labelGM->setStyleSheet("background-color: lightBlue");
 
     this->setStyleSheet("background-color: white;");
     ui->timeEdit->setDisplayFormat("mm:ss");
@@ -59,18 +61,27 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     ui->pushButton_3->setStyleSheet("background-color: lightGreen");
     ui->pushButton_4->setStyleSheet("background-color: red");
     ui->textBrowser_2->setStyleSheet(" { border: 4px solid black;}");
-    ui->centralWidget->setGeometry(500,500,500,500);
+   // ui->centralWidget->setGeometry(500,500,500,500);
+
 
     QFile gm(game_mode);
     QString game_time;
+    QString game_name;
+    QString game_Titel;
 
     gm.open(QIODevice::ReadOnly);
+
+    ui->labelGM->setText(game_name);
 
     QTextStream gm_stream(&gm);
     while(!gm_stream.atEnd())
     {
+        game_Titel = gm_stream.readLine();
+        game_name = gm_stream.readLine();
         game_time = gm_stream.readLine();
     }
+
+    ui->labelGM->setText(game_name);
 
     int minutes = game_time.toInt();
 

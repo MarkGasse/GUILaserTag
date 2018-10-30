@@ -171,7 +171,7 @@ void MainWindow::on_LoginButton_clicked()
         }
     }
     if(MBoxStatus == 1){
-        QMessageBox::warning(this,tr("ERROR 404"),tr("username or password is not correct!."),QMessageBox::Ok);
+        QMessageBox::warning(this,tr("ERROR 404"),tr("username or password is not correct!"),QMessageBox::Ok);
         MBoxStatus = 0;
     }
 }

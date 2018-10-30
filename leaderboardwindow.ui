@@ -229,6 +229,30 @@
      <string>&lt;&lt; choose GameMode</string>
     </property>
    </widget>
+   <widget class="QLabel" name="labelGM">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>160</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>26</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>GameMode</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

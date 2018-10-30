@@ -27,6 +27,8 @@ private slots:
 
     void on_pushButtonStart_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::SearchPlayerWindow *ui;
     leaderboardWindow *lbw;
