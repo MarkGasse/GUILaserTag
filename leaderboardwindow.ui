@@ -97,7 +97,7 @@
        <x>40</x>
        <y>20</y>
        <width>380</width>
-       <height>48</height>
+       <height>51</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayoutTimer">
@@ -253,6 +253,16 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <zorder>labelTopBar</zorder>
+   <zorder>Label_date</zorder>
+   <zorder>groupBox</zorder>
+   <zorder>groupBox_2</zorder>
+   <zorder>groupBoxGIF</zorder>
+   <zorder>groupBoxEvents</zorder>
+   <zorder>pushButtonBack</zorder>
+   <zorder>pushButtonBACK2</zorder>
+   <zorder>labelGM</zorder>
+   <zorder>CloseGUI</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
