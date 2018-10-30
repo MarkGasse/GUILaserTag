@@ -2,6 +2,7 @@
 #define LEADERBOARDWINDOW_H
 
 #include <QMainWindow>
+#include <QMovie>
 
 namespace Ui {
 class leaderboardWindow;
@@ -19,8 +20,6 @@ public:
 private slots:
     void on_pushButton_3_clicked();
 
-
-
     void on_pushButton_4_clicked();
 
     void timerupdater();
@@ -29,8 +28,13 @@ private slots:
 
     void on_pushButtonBACK2_clicked();
 
+    void setAnimation(int arrayPos);
+
 private:
     Ui::leaderboardWindow *ui;
+    QString Animations[1];
+    int arrayPos = 0;
+    QMovie *GIF = new QMovie("");
 };
 
 #endif // LEADERBOARDWINDOW_H
