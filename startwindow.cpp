@@ -8,6 +8,8 @@
 #include "QTemporaryFile"
 #include <cstdio>
 #include "mainwindow.h"
+#include <QMessageBox>
+#include "QPalette"
 
 StartWindow::StartWindow(QWidget *parent) :
     QDialog(parent),
@@ -88,14 +90,19 @@ void StartWindow::timerFunction()
 // open searchplayerwindow
 void StartWindow::on_pushButtonStart_clicked()
 {
-    QString selectedItem = ui->listWidgetGame->currentItem()->text();
+    if(ui->listWidgetGame->selectedItems().size() != 0){
+        QString selectedItem = ui->listWidgetGame->currentItem()->text();
 
-    game_mode = selectedItem;
-    qDebug() << game_mode;
+        game_mode = selectedItem;
+        qDebug() << game_mode;
 
-    close();
-    searchW = new SearchPlayerWindow(this);
-    searchW->showFullScreen();
+        close();
+        searchW = new SearchPlayerWindow(this);
+        searchW->showFullScreen();
+    }else{
+       QMessageBox::warning(this,tr("Not selected!"),tr("Select gamemode before starting game."),QMessageBox::Ok);
+    }
+
 }
 
 // delete selected item from listwidget
@@ -145,7 +152,6 @@ void StartWindow::on_pushButtonDelete_clicked()
 //Open create new gamemode window
 void StartWindow::on_pushButtonCreate_clicked()
 {
-    close();
     CreateW = new CreateGM(this);
     CreateW->show();
 

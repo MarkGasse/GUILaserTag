@@ -9,6 +9,7 @@
 #include <QTimeEdit>
 #include <QTimer>
 #include <QBasicTimer>
+#include <QMovie>
 #include <QtDebug>
 #include <QScreen>
 #include "mainwindow.h"
@@ -105,8 +106,8 @@ void leaderboardWindow::on_pushButton_4_clicked() {
 
     //do timer stuff
     timer1->stop();
-    QTime zero_time(0,0);
-    ui->timeEdit->setTime(zero_time);
+    //QTime zero_time(0,0);
+    //ui->timeEdit->setTime(zero_time);
 }
 
 void leaderboardWindow::timerupdater() {
