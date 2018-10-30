@@ -150,7 +150,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>GIF</string>
+     <string>Event animation</string>
     </property>
     <widget class="QLabel" name="label">
      <property name="geometry">

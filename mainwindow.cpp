@@ -8,6 +8,7 @@
 #include "QFile"
 #include "QString"
 #include "QTextStream"
+#include "QMessageBox"
 
 QString game_mode = " ";
 
@@ -159,12 +160,19 @@ void MainWindow::on_LoginButton_clicked()
             hide();
             startW = new StartWindow(this);
             startW->showFullScreen();
+            MBoxStatus = 0;
+            break;
         }else{
+            MBoxStatus = 1;
             ui->statusBarLogin->setStyleSheet("color: red");
             ui->statusBarLogin->showMessage("username or password is not correct!",4000);
             ui->lineEdit_Password->setText("");
             ui->lineEdit_Username->setText("");
         }
+    }
+    if(MBoxStatus == 1){
+        QMessageBox::warning(this,tr("ERROR 404"),tr("username or password is not correct!."),QMessageBox::Ok);
+        MBoxStatus = 0;
     }
 }
 

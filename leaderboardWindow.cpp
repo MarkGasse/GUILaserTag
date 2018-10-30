@@ -155,5 +155,9 @@ void leaderboardWindow::on_pushButtonBACK2_clicked()
 
 void leaderboardWindow::setAnimation(int arrayPos)
 {
-    GIF->setScaledSize(ui->label->size()); // scaling gif to label size
+
+    GIF = new QMovie(Animations[arrayPos]);
+    GIF->setScaledSize(ui->label->size());
+    ui->label->setMovie(GIF);
+    GIF->start();
 }

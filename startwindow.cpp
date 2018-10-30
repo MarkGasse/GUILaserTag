@@ -100,7 +100,7 @@ void StartWindow::on_pushButtonStart_clicked()
         searchW = new SearchPlayerWindow(this);
         searchW->showFullScreen();
     }else{
-       QMessageBox::warning(this,tr("Not selected!"),tr("Select gamemode before starting game."),QMessageBox::Ok);
+       QMessageBox::information(this,tr("Not selected!"),tr("Select gamemode before starting game."),QMessageBox::Ok);
     }
 
 }

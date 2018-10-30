@@ -43,6 +43,7 @@ private:
     StartWindow *startW;
     registreerWindow *registreerW;
     QTimer *timer;
+    bool MBoxStatus;
 };
 
 #endif // MAINWINDOW_H
