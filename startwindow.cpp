@@ -17,6 +17,8 @@ StartWindow::StartWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
+
     // get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect rec = screen->geometry();
@@ -154,4 +156,9 @@ void StartWindow::on_pushButtonCreate_clicked()
     CreateW = new CreateGM(this);
     CreateW->show();
 
+}
+
+void StartWindow::on_CloseGUI_clicked()
+{
+ close();
 }

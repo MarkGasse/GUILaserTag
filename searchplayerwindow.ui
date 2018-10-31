@@ -202,22 +202,5 @@
   </widget>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>CloseGUI</sender>
-   <signal>clicked()</signal>
-   <receiver>SearchPlayerWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>467</x>
-     <y>274</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>474</x>
-     <y>342</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

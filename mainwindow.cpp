@@ -19,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
+
     // get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect rec = screen->geometry();
@@ -36,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->labelTopBar->setStyleSheet("background-color: lightblue");
     ui->Label_date->setStyleSheet("background-color: lightblue");
     ui->groupBoxLogin->setStyleSheet("QGroupBox { border: 2px solid black;}");
+
 }
 
 MainWindow::~MainWindow()
@@ -186,4 +189,11 @@ void MainWindow::on_pushButtonRegistreer_clicked()
 {
     registreerW = new registreerWindow(this);
     registreerW->show();
+}
+
+void MainWindow::on_CloseGUI_clicked()
+{
+
+   close();
+
 }

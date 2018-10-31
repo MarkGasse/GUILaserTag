@@ -29,6 +29,8 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     //Animations[0] = ("");
     //Animations[1] = ("");
 
+
+
     // get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect rec = screen->geometry();
@@ -239,4 +241,9 @@ void leaderboardWindow::setAnimation(int arrayPos)
     GIF->setScaledSize(ui->label->size());
     ui->label->setMovie(GIF);
     GIF->start();
+}
+
+void leaderboardWindow::on_CloseGUI_clicked()
+{
+  close();
 }

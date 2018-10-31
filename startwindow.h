@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "searchplayerwindow.h"
+#include "back_end.h"
 #include "creategm.h"
 #include <QTimer>
 
@@ -20,11 +21,13 @@ private:
     QTimer *timer;
     SearchPlayerWindow *searchW;
     CreateGM *CreateW;
+    Back_End *B;
 
 private slots:
     void on_pushButtonStart_clicked();
     void on_pushButtonDelete_clicked();
     void on_pushButtonCreate_clicked();
+    void on_CloseGUI_clicked();
 
 public:
     explicit StartWindow(QWidget *parent = nullptr);

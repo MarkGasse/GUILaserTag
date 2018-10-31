@@ -126,7 +126,7 @@
    <property name="title">
     <string>Gamemode:</string>
    </property>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -182,22 +182,5 @@
   </widget>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>CloseGUI</sender>
-   <signal>clicked()</signal>
-   <receiver>StartWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>380</x>
-     <y>21</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>380</x>
-     <y>39</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

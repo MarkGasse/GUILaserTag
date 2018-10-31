@@ -32,7 +32,8 @@ SOURCES += \
     registreerwindow.cpp \
     searchplayerwindow.cpp \
     creategm.cpp \
-    leaderboardWindow.cpp
+    leaderboardWindow.cpp \
+    back_end.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,7 +41,8 @@ HEADERS += \
     registreerwindow.h \
     searchplayerwindow.h \
     creategm.h \
-    leaderboardwindow.h
+    leaderboardwindow.h \
+    back_end.h
 
 FORMS += \
         mainwindow.ui \
@@ -48,7 +50,8 @@ FORMS += \
     registreerwindow.ui \
     searchplayerwindow.ui \
     creategm.ui \
-    leaderboardwindow.ui
+    leaderboardwindow.ui \
+    back_end.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

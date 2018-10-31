@@ -5,12 +5,15 @@
 #include "QRect"
 #include "QScreen"
 #include "startwindow.h"
+#include "QMessageBox"
 
 SearchPlayerWindow::SearchPlayerWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::SearchPlayerWindow)
 {
     ui->setupUi(this);
+
+
 
     // get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -97,6 +100,8 @@ void SearchPlayerWindow::on_pushButtonStart_clicked()
         close();
         lbw = new leaderboardWindow(this);
         lbw->showFullScreen();
+    }else{
+        QMessageBox::warning(this,tr("Searching!"),tr("Can't start game while looking for players!"),QMessageBox::Ok);
     }
 
 }
@@ -107,4 +112,9 @@ void SearchPlayerWindow::on_pushButton_clicked()
     StartWindow *SW;
     SW = new StartWindow(this);
     SW->showFullScreen();
+}
+
+void SearchPlayerWindow::on_CloseGUI_clicked()
+{
+ close();
 }

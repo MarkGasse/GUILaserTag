@@ -244,7 +244,7 @@
      <x>0</x>
      <y>0</y>
      <width>1252</width>
-     <height>26</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
@@ -264,22 +264,5 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections>
-  <connection>
-   <sender>CloseGUI</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>960</x>
-     <y>440</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>383</x>
-     <y>69</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

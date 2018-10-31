@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "startwindow.h"
 #include "registreerwindow.h"
+#include "back_end.h"
 #include <QTimer>
 #include "QDebug"
 #include "QFile"
@@ -24,6 +25,7 @@ class MainWindow : public QMainWindow
 private:
     Ui::MainWindow *ui;
     StartWindow *startW;
+    Back_End *B;
     registreerWindow *registreerW;
     QTimer *timer;
     bool MBoxStatus;
@@ -31,6 +33,7 @@ private:
 private slots:
     void on_LoginButton_clicked();
     void on_pushButtonRegistreer_clicked();
+    void on_CloseGUI_clicked();
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
