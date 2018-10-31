@@ -166,8 +166,8 @@
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>55</width>
-       <height>16</height>
+       <width>241</width>
+       <height>81</height>
       </rect>
      </property>
      <property name="text">
@@ -288,11 +288,11 @@
      <string>TextLabel</string>
     </property>
    </widget>
+   <zorder>groupBoxGIF</zorder>
    <zorder>labelTopBar</zorder>
    <zorder>Label_date</zorder>
    <zorder>groupBox</zorder>
    <zorder>groupBox_2</zorder>
-   <zorder>groupBoxGIF</zorder>
    <zorder>groupBoxEvents</zorder>
    <zorder>pushButtonBack</zorder>
    <zorder>pushButtonBACK2</zorder>

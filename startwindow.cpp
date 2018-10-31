@@ -94,7 +94,6 @@ void StartWindow::on_pushButtonStart_clicked()
         QString selectedItem = ui->listWidgetGame->currentItem()->text();
 
         game_mode = selectedItem;
-        qDebug() << game_mode;
 
         close();
         searchW = new SearchPlayerWindow(this);
@@ -128,8 +127,8 @@ void StartWindow::on_pushButtonDelete_clicked()
            W.write("TmpGameModeList",item,1); //open and close tmpgamemodelist
         } else {
             std::string file_to_remove = item.toStdString();
-            const char *f = file_to_remove.c_str();
-            if(std::remove(f)) qDebug() << "deleted";
+            //const char *f = file_to_remove.c_str();
+            //if(std::remove(f)) qDebug() << "deleted";
         }
     }
         file.close(); //close gamemodes, tmp and gamemodes now both closed
