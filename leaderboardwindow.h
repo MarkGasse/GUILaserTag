@@ -26,6 +26,8 @@ private slots:
 
     void timerupdater();
 
+    void updateLB();
+
     void on_pushButtonBack_clicked();
 
     void on_pushButtonBACK2_clicked();
@@ -38,7 +40,7 @@ private:
     int arrayPos = 0;
     QMovie *GIF = new QMovie("");
     bool stateTime = 1;
-    QListWidgetItem *lb_item;
+    QListWidgetItem lb_item;
 };
 
 #endif // LEADERBOARDWINDOW_H

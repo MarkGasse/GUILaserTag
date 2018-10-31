@@ -15,6 +15,7 @@
 #include "QListWidget"
 #include "mainwindow.h"
 #include "QBrush"
+#include <vector>
 
 static QTimer *timer1 = new QTimer();
 
@@ -66,8 +67,8 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     ui->pushButton_3->setStyleSheet("background-color: lightGreen");
     ui->pushButton_4->setStyleSheet("background-color: red");
 
-    lb_item = new QListWidgetItem(QIcon(":/resource/image/lb.png"), "             Name:                          K/D                         Points:       ");
-    ui->listWidgetLeaderboard->addItem(lb_item);
+    lb_item = QListWidgetItem(QIcon(":/resource/image/lb.png"), "             Name:                          K/D                         Points:       ");
+    ui->listWidgetLeaderboard->addItem(&lb_item);
     ui->listWidgetLeaderboard->setStyleSheet("Background-color: lightblue");
     ui->labelHPMatch->setStyleSheet("background-color: lightBlue");
 
@@ -101,6 +102,7 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     ui->timeEdit->setTime(QTime(0, minutes, 0));
 
     connect (timer1, SIGNAL(timeout()),this,SLOT(timerupdater()));
+    connect (timer1, SIGNAL(timeout()), this, SLOT(updateLB()));
 
 }
 
@@ -124,18 +126,6 @@ void leaderboardWindow::on_pushButton_3_clicked() {
         }
         writeToEventBox("game started!","Green","Arduino: ");
         timer1->start(1000);
-
-        //do file i/o stuff
-        QFile file("C:\\test.txt");
-        file.open(QIODevice::ReadOnly);
-        QTextStream in(&file);
-
-        while(!in.atEnd())
-        {
-            QString line = in.readLine();
-            //ui->textBrowser_2->append(line);
-        }
-        //ui->textBrowser_2->setText(in.readAll());
         stateTime = 0;
     }
 
@@ -146,9 +136,59 @@ void leaderboardWindow::on_pushButton_4_clicked() {
         //do timer stuff
         timer1->stop();
         writeToEventBox("game is paused!","purple","Arduino: ");
-        //QTime zero_time(0,0);
-        //ui->timeEdit->setTime(zero_time);
         stateTime = 1;
+    }
+
+}
+
+void leaderboardWindow::updateLB()
+{
+    struct player
+    {
+        QString name;
+        int kills;
+        int deaths;
+        int points;
+
+    };
+
+    std::vector<player> players;
+
+    player p1 = {"player1", 10, 5, 200};
+    player p2 = {"player2", 10, 5, 100};
+    player p3 = {"player3", 10, 5, 500};
+
+    players.push_back(p1);
+    players.push_back(p2);
+    players.push_back(p3);
+
+    for(unsigned int i = 0; i < players.size()-1; i++)
+    {
+        for(unsigned int j = 0; j < players.size()-i-1; j++)
+        {
+            if(players[j].points < players[j+1].points)
+            {
+                auto tmp = players[j];
+                players[j] = players[j+1];
+                players[j+1] = tmp;
+            }
+        }
+    }
+
+    ui->listWidgetLeaderboard->clear();
+    auto lbiiii = new QListWidgetItem(QIcon(":/resource/image/lb.png"), "             Name:                          K/D                         Points:       ");
+    ui->listWidgetLeaderboard->addItem(lbiiii);
+
+    int pos = 1;
+    for(auto & p : players)
+    {
+        QString str;
+
+        QTextStream(&str) <<"#"<<pos<<"              "<<p.name<<"                           "<<p.kills/p.deaths<<"                                "<<p.points;
+        QString str1 = "test";
+        auto lbi = new QListWidgetItem(str);
+        ui->listWidgetLeaderboard->addItem(lbi);
+        pos++;
     }
 
 }
