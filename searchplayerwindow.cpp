@@ -116,5 +116,5 @@ void SearchPlayerWindow::on_pushButton_clicked()
 
 void SearchPlayerWindow::on_CloseGUI_clicked()
 {
- close();
+    closeUI = 1;
 }

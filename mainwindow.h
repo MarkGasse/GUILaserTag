@@ -11,6 +11,7 @@
 #include "QString"
 #include "QTextStream"
 #include "QKeyEvent"
+#include "QCloseEvent"
 
 extern QString game_mode;
 
@@ -44,7 +45,6 @@ public:
 
 protected:
     void keyPressEvent(QKeyEvent *event);
-
 
 public slots:
     void write(QString Filename, QString text, bool status);

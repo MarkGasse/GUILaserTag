@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "back_end.h"
 #include <QPixmap>
 #include <QDateTime>
 #include "QRect"
@@ -193,7 +194,5 @@ void MainWindow::on_pushButtonRegistreer_clicked()
 
 void MainWindow::on_CloseGUI_clicked()
 {
-
-   close();
-
+  closeUI = 1;
 }

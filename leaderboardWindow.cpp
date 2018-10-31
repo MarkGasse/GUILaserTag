@@ -245,5 +245,5 @@ void leaderboardWindow::setAnimation(int arrayPos)
 
 void leaderboardWindow::on_CloseGUI_clicked()
 {
-  close();
+  closeUI = 1;
 }

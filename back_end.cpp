@@ -3,6 +3,11 @@
 #include "QRect"
 #include "QScreen"
 #include "mainwindow.h"
+#include "startwindow.h"
+#include "QDebug"
+
+bool closeUI = 0;
+static QTimer *timer1 = new QTimer();
 
 Back_End::Back_End(QWidget *parent) :
     QMainWindow(parent),
@@ -23,9 +28,29 @@ Back_End::Back_End(QWidget *parent) :
     ui->label->setGeometry(0,0,w,50);
     ui->label->setStyleSheet("background-color: lightblue");
     this->setStyleSheet("background-color: white");
+
+
+    connect(timer1, SIGNAL(timeout()),this,SLOT(check()));
+    timer1->start(2000);
+
+
 }
 
 Back_End::~Back_End()
 {
     delete ui;
+}
+
+void Back_End::closeWindow()
+{
+    close();
+}
+
+void Back_End::check()
+{
+    if(closeUI == 1){
+        timer1->stop();
+      close();
+    }
+
 }

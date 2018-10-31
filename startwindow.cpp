@@ -160,5 +160,5 @@ void StartWindow::on_pushButtonCreate_clicked()
 
 void StartWindow::on_CloseGUI_clicked()
 {
- close();
+    closeUI = 1;
 }

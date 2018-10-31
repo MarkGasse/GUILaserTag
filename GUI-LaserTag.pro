@@ -32,8 +32,7 @@ SOURCES += \
     registreerwindow.cpp \
     searchplayerwindow.cpp \
     creategm.cpp \
-    leaderboardWindow.cpp \
-    back_end.cpp
+    leaderboardWindow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,8 +40,7 @@ HEADERS += \
     registreerwindow.h \
     searchplayerwindow.h \
     creategm.h \
-    leaderboardwindow.h \
-    back_end.h
+    leaderboardwindow.h
 
 FORMS += \
         mainwindow.ui \
