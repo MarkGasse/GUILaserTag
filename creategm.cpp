@@ -23,13 +23,13 @@ CreateGM::CreateGM(QWidget *parent) :
     ui->comboBoxMode->addItem("FreeForAll");
 
     //set times
-    for(int t = 5; t <= 60; t+= 5){
+    for(int t = 5; t <= 50; t+= 5){
         ui->comboBoxTime->addItem(QString::number(t));
     }
 
     //set Health points
     ui->comboBoxHP->addItem(QString::number(1));
-    for(int h = 0; h <= 500; h+= 50){
+    for(int h = 50; h <= 500; h+= 50){
         ui->comboBoxHP->addItem(QString::number(h));
     }
 

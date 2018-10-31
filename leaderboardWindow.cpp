@@ -42,7 +42,7 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     ui->groupBox->setGeometry(w/2+250,h/2-280,625,600);
     ui->groupBox_2->setGeometry(w/2-235,60,470,80);
     ui->groupBoxGIF->setGeometry(w/2-850,h/2-280,570,200);
-    ui->label->setGeometry(w/2-840,h/2-270,510,190);
+    ui->label->setGeometry(20,20,530,160);
     ui->groupBoxEvents->setGeometry(w/2-850,h/2,570,400);
     ui->labelGM->setGeometry(w/2-300,0,600,50);
     ui->labelHPMatch->setGeometry(w/2+400,0,300,50);

@@ -93,9 +93,12 @@ void SearchPlayerWindow::on_pushButtonStopS_clicked()
 
 void SearchPlayerWindow::on_pushButtonStart_clicked()
 {
-    close();
-    lbw = new leaderboardWindow(this);
-    lbw->showFullScreen();
+    if(status == "not searching"){
+        close();
+        lbw = new leaderboardWindow(this);
+        lbw->showFullScreen();
+    }
+
 }
 
 void SearchPlayerWindow::on_pushButton_clicked()

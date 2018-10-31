@@ -102,7 +102,7 @@ void MainWindow::write(QString Filename, QString text, bool status)
     if(status)
     {
         myfile.open(QFile::WriteOnly | QFile::Text | QFile::Append);
-        if(!myfile.isOpen()) qDebug() << "file not open";
+        //if(!myfile.isOpen()) qDebug() << "file not open";
 
         // write to myfile
         QTextStream out(&myfile);
@@ -112,7 +112,7 @@ void MainWindow::write(QString Filename, QString text, bool status)
 
     } else {
         myfile.open(QFile::WriteOnly | QFile::Truncate | QFile::Text);
-        if(!myfile.isOpen()) qDebug() << "file not open";
+        //if(!myfile.isOpen()) qDebug() << "file not open";
     }
 
     // close myfile
@@ -123,9 +123,9 @@ QString MainWindow::read(QString Filename)
 {
     // open myfile and check if file is open
     QFile myfile(Filename);
-    if(!myfile.open(QFile::ReadOnly | QFile::Text)){
-        qDebug() << "could not read file: " << Filename << ".\n";
-    }
+   // if(!myfile.open(QFile::ReadOnly | QFile::Text)){
+   //     qDebug() << "could not read file: " << Filename << ".\n";
+   // }
 
     // read myfile
     QTextStream in(&myfile);

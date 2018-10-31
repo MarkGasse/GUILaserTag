@@ -33,7 +33,7 @@ private:
     Ui::SearchPlayerWindow *ui;
     leaderboardWindow *lbw;
     QTimer *timer;
-    QString status;
+    QString status = "not searching";
 };
 
 #endif // SEARCHPLAYERWINDOW_H
