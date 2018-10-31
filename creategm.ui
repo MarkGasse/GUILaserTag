@@ -14,7 +14,8 @@
    <string>Create</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="-"/>
+   <iconset theme="-">
+    <normaloff>.</normaloff>.</iconset>
   </property>
   <widget class="QLabel" name="labelTitel">
    <property name="geometry">
@@ -37,7 +38,7 @@
     <string>Create GameMode</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>70</x>
@@ -132,6 +133,33 @@
     </item>
     <item>
      <spacer name="verticalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QLabel" name="labelHP">
+        <property name="text">
+         <string>Health points:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBoxHP"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <spacer name="verticalSpacer_4">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QMovie>
+#include "QListWidgetItem"
 
 namespace Ui {
 class leaderboardWindow;
@@ -37,6 +38,7 @@ private:
     int arrayPos = 0;
     QMovie *GIF = new QMovie("");
     bool stateTime = 1;
+    QListWidgetItem *lb_item;
 };
 
 #endif // LEADERBOARDWINDOW_H

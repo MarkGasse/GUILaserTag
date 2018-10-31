@@ -12,7 +12,9 @@
 #include <QMovie>
 #include <QtDebug>
 #include <QScreen>
+#include "QListWidget"
 #include "mainwindow.h"
+#include "QBrush"
 
 static QTimer *timer1 = new QTimer();
 
@@ -43,6 +45,7 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     ui->label->setGeometry(w/2-840,h/2-270,510,190);
     ui->groupBoxEvents->setGeometry(w/2-850,h/2,570,400);
     ui->labelGM->setGeometry(w/2-300,0,600,50);
+    ui->labelHPMatch->setGeometry(w/2+400,0,300,50);
 
     ui->label->setStyleSheet("background-color: lightblue");
     ui->pushButtonBack->setStyleSheet("background-color: lightGray");
@@ -62,14 +65,19 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
 
     ui->pushButton_3->setStyleSheet("background-color: lightGreen");
     ui->pushButton_4->setStyleSheet("background-color: red");
-    ui->textBrowser_2->setStyleSheet(" { border: 4px solid black;}");
-   // ui->centralWidget->setGeometry(500,500,500,500);
+
+    lb_item = new QListWidgetItem(QIcon(":/resource/image/lb.png"), "             Name:                          K/D                         Points:       ");
+    ui->listWidgetLeaderboard->addItem(lb_item);
+    ui->listWidgetLeaderboard->setStyleSheet("Background-color: lightblue");
+    ui->labelHPMatch->setStyleSheet("background-color: lightBlue");
+
 
 
     QFile gm(game_mode);
     QString game_time;
     QString game_name;
     QString game_Titel;
+    QString game_playerHP;
 
     gm.open(QIODevice::ReadOnly);
 
@@ -81,9 +89,12 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
         game_Titel = gm_stream.readLine();
         game_name = gm_stream.readLine();
         game_time = gm_stream.readLine();
+        game_playerHP = gm_stream.readLine();
     }
 
     ui->labelGM->setText(game_name);
+
+    ui->labelHPMatch->setText("Max HP players: " + game_playerHP);
 
     int minutes = game_time.toInt();
 
@@ -122,7 +133,7 @@ void leaderboardWindow::on_pushButton_3_clicked() {
         while(!in.atEnd())
         {
             QString line = in.readLine();
-            ui->textBrowser_2->append(line);
+            //ui->textBrowser_2->append(line);
         }
         //ui->textBrowser_2->setText(in.readAll());
         stateTime = 0;

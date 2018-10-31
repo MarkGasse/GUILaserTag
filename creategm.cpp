@@ -17,6 +17,7 @@ CreateGM::CreateGM(QWidget *parent) :
     ui->lineEditName->setStyleSheet("background-color: white");
     ui->comboBoxMode->setStyleSheet("background-color: white");
     ui->comboBoxTime->setStyleSheet("background-color: white");
+    ui->comboBoxHP->setStyleSheet("background-color: white");
 
     //set gamemodes
     ui->comboBoxMode->addItem("FreeForAll");
@@ -24,6 +25,12 @@ CreateGM::CreateGM(QWidget *parent) :
     //set times
     for(int t = 5; t <= 60; t+= 5){
         ui->comboBoxTime->addItem(QString::number(t));
+    }
+
+    //set Health points
+    ui->comboBoxHP->addItem(QString::number(1));
+    for(int h = 0; h <= 500; h+= 50){
+        ui->comboBoxHP->addItem(QString::number(h));
     }
 
 }
@@ -42,10 +49,11 @@ void CreateGM::on_pushButtonCreate_clicked()
 {
     QString mode     = ui->comboBoxMode->currentText();
     QString time     = ui->comboBoxTime->currentText();
+    QString HP       = ui->comboBoxHP->currentText();
     QString fileName = ui->lineEditName->text();
-    QString array[3] = {fileName,mode,time};
+    QString array[4] = {fileName,mode,time,HP};
     MainWindow W;
-    for(int i = 0; i < 3; i++){
+    for(int i = 0; i < 4; i++){
          W.write(fileName,array[i],1);
     }
 
