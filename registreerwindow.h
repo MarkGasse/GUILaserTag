@@ -12,15 +12,16 @@ class registreerWindow : public QDialog
 {
     Q_OBJECT
 
-public:
-    explicit registreerWindow(QWidget *parent = nullptr);
-    ~registreerWindow();
+private:
+    Ui::registreerWindow *ui;
 
 private slots:
     void on_pushButtonRegistreer_clicked();
 
-private:
-    Ui::registreerWindow *ui;
+public:
+    explicit registreerWindow(QWidget *parent = nullptr);
+    ~registreerWindow();
+
 };
 
 #endif // REGISTREERWINDOW_H

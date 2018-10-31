@@ -52,19 +52,18 @@ void CreateGM::on_pushButtonCreate_clicked()
     QString HP       = ui->comboBoxHP->currentText();
     QString fileName = ui->lineEditName->text();
     QString array[4] = {fileName,mode,time,HP};
-    MainWindow W;
-    for(int i = 0; i < 4; i++){
-         W.write(fileName,array[i],1);
+    if(fileName != ""){
+        MainWindow W;
+        for(int i = 0; i < 4; i++){
+             W.write(fileName,array[i],1);
+        }
+
+        W.write("GAMEMODES",fileName,1);
+
+        close();
+        StartWindow *startW;
+        startW = new StartWindow(this);
+        startW->showFullScreen();
     }
 
-    W.write("GAMEMODES",fileName,1);
-
-
-
-
-
-    close();
-    StartWindow *startW;
-    startW = new StartWindow(this);
-    startW->showFullScreen();
 }

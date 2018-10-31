@@ -11,17 +11,17 @@ class CreateGM : public QDialog
 {
     Q_OBJECT
 
+private:
+    Ui::CreateGM *ui;
+
+private slots:
+    void on_pushButtonCancel_clicked();
+    void on_pushButtonCreate_clicked();
+
 public:
     explicit CreateGM(QWidget *parent = nullptr);
     ~CreateGM();
 
-private slots:
-    void on_pushButtonCancel_clicked();
-
-    void on_pushButtonCreate_clicked();
-
-private:
-    Ui::CreateGM *ui;
 };
 
 #endif // CREATEGM_H
