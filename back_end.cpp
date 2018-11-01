@@ -31,7 +31,7 @@ Back_End::Back_End(QWidget *parent) :
 
 
     connect(timer1, SIGNAL(timeout()),this,SLOT(check()));
-    timer1->start(2000);
+    timer1->start(1000);
 
 
 }
