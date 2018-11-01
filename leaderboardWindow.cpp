@@ -233,7 +233,11 @@ void leaderboardWindow::timerupdater() {
 
 void leaderboardWindow::on_pushButtonBack_clicked()
 {
-    if(gameIsRunning) return;
+    if(gameIsRunning)
+    {
+        QMessageBox::warning(this,tr("ERROR "),tr("Please stop the game."),QMessageBox::Ok);
+        return;
+    }
 
     SearchPlayerWindow *SPW;
     SPW = new SearchPlayerWindow();
@@ -244,7 +248,11 @@ void leaderboardWindow::on_pushButtonBack_clicked()
 
 void leaderboardWindow::on_pushButtonBACK2_clicked()
 {
-    if(gameIsRunning) return;
+    if(gameIsRunning)
+    {
+        QMessageBox::warning(this,tr("ERROR "),tr("Please stop the game."),QMessageBox::Ok);
+        return;
+    }
 
     StartWindow *SW;
     SW = new StartWindow();
