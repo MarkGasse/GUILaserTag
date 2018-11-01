@@ -181,6 +181,13 @@
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>pushButtonStart</tabstop>
+  <tabstop>listWidgetGame</tabstop>
+  <tabstop>CloseGUI</tabstop>
+  <tabstop>pushButtonDelete</tabstop>
+  <tabstop>pushButtonCreate</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

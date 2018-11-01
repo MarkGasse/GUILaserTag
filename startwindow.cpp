@@ -163,3 +163,11 @@ void StartWindow::on_CloseGUI_clicked()
 {
     QApplication::quit();
 }
+
+void StartWindow::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Return){
+
+        on_pushButtonStart_clicked();
+    }
+}

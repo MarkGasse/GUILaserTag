@@ -5,6 +5,7 @@
 #include "searchplayerwindow.h"
 #include "back_end.h"
 #include "creategm.h"
+#include "QKeyEvent"
 #include <QTimer>
 
 
@@ -28,6 +29,9 @@ private slots:
     void on_pushButtonDelete_clicked();
     void on_pushButtonCreate_clicked();
     void on_CloseGUI_clicked();
+
+protected:
+    void keyPressEvent(QKeyEvent *event);
 
 public:
     explicit StartWindow(QWidget *parent = nullptr);
