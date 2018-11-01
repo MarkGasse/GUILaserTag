@@ -19,10 +19,10 @@ private:
     QString Animations[2];
     int arrayPos = 0;
     QMovie *GIF = new QMovie("");
-    int stateTime = 1;
+    bool gameStarted = 1;
     QListWidgetItem lb_item;
     Back_End *B;
-    bool game_ended = 0;
+    bool gameIsRunning = 0;
 
 private slots:
     void on_pushButton_3_clicked();

@@ -121,27 +121,31 @@ void leaderboardWindow::writeToEventBox(QString message, QString textColor, QStr
     ui->textBrowserEvents->append((type + message));
 }
 
-void leaderboardWindow::on_pushButton_3_clicked() {
-    if(stateTime == 1){
-        //start timer to keep time, timer sends events
-        auto current_time = ui->timeEdit->time();
-        if(current_time.second() == 0 && current_time.minute() == 0) {
-            return;
-        }
+void leaderboardWindow::on_pushButton_3_clicked()
+{
+    auto current_time = ui->timeEdit->time();
+    if(current_time.second() == 0 && current_time.minute() == 0)
+    {
+        return;
+    }
+
+    if(gameStarted == 1){
         writeToEventBox("game started!","Green","Arduino: ");
         setAnimation(1);
         timer1->start(1000);
-        stateTime = 0;
+         gameStarted = 0;
+        gameIsRunning = 1;
     }
 
 }
 
 void leaderboardWindow::on_pushButton_4_clicked() {
-    if(stateTime == 0){
+    if(gameStarted == 0){
         //do timer stuff
         timer1->stop();
         writeToEventBox("game is paused!","purple","Arduino: ");
-        stateTime = 1;
+        gameStarted = 1;
+        gameIsRunning = 0;
     }
 
 }
@@ -213,8 +217,7 @@ void leaderboardWindow::timerupdater() {
 
     if(seconds == 0 && minutes == 0) {
         writeToEventBox("game has ended!","red","Arduino: ");
-        stateTime = 3;
-        game_ended = 1;
+        gameIsRunning = 0;
         timer1->stop();
     }
 
@@ -251,7 +254,7 @@ void leaderboardWindow::setAnimation(int arrayPos)
 
 void leaderboardWindow::on_CloseGUI_clicked()
 {
-    if(game_ended == 1){
+    if(gameIsRunning == 0){
        closeUI = 1;
     }else{
          QMessageBox::warning(this,tr("Searching!"),tr("Can't quit game until game has finished!"),QMessageBox::Ok);
