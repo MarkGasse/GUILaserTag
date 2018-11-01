@@ -62,7 +62,8 @@ void CreateGM::on_pushButtonCreate_clicked()
 
         close();
         StartWindow *startW;
-        startW = new StartWindow(this);
+        startW = new StartWindow();
+        delete this;
         startW->showFullScreen();
     }
 

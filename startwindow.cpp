@@ -153,12 +153,13 @@ void StartWindow::on_pushButtonDelete_clicked()
 //Open create new gamemode window
 void StartWindow::on_pushButtonCreate_clicked()
 {
-    CreateW = new CreateGM(this);
+    CreateW = new CreateGM();
+    delete this;
     CreateW->show();
 
 }
 
 void StartWindow::on_CloseGUI_clicked()
 {
-    closeUI = 1;
+    QApplication::quit();
 }

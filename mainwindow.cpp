@@ -168,7 +168,8 @@ void MainWindow::on_LoginButton_clicked()
     for(int j = 0; j < 10; j++ ){
         if(username == user[j]  && password == pass[j] && username != "" && password != ""){
             hide();
-            startW = new StartWindow(this);
+            startW = new StartWindow();
+            delete this;
             startW->showFullScreen();
             MBoxStatus = 0;
             break;
@@ -194,5 +195,5 @@ void MainWindow::on_pushButtonRegistreer_clicked()
 
 void MainWindow::on_CloseGUI_clicked()
 {
-  closeUI = 1;
+  QApplication::quit();
 }

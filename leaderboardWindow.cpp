@@ -17,14 +17,14 @@
 #include "QBrush"
 #include <vector>
 
-static QTimer *timer1 = new QTimer();
-static QTimer *timer2 = new QTimer();
-
 leaderboardWindow::leaderboardWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::leaderboardWindow)
 {
     ui->setupUi(this);
+
+    timer1 = new QTimer();
+    timer2 = new QTimer();
 
     //setting gifs in array
     Animations[0] = ("");
@@ -143,7 +143,8 @@ void leaderboardWindow::on_pushButton_3_clicked()
 
 }
 
-void leaderboardWindow::on_pushButton_4_clicked() {
+void leaderboardWindow::on_pushButton_4_clicked()
+{
     if(gameStarted == 0){
         //do timer stuff
         timer1->stop();
@@ -232,23 +233,23 @@ void leaderboardWindow::timerupdater() {
 
 void leaderboardWindow::on_pushButtonBack_clicked()
 {
-    timer1->stop();
-    timer2->stop();
-    close();
+    if(gameIsRunning) return;
+
     SearchPlayerWindow *SPW;
-    SPW = new SearchPlayerWindow(this);
+    SPW = new SearchPlayerWindow();
     SPW->showFullScreen();
+    close();
+
 }
 
 void leaderboardWindow::on_pushButtonBACK2_clicked()
 {
-    timer1->stop();
-    timer2->stop();
-    close();
-    StartWindow *SW;
-    SW = new StartWindow(this);
-    SW->showFullScreen();
+    if(gameIsRunning) return;
 
+    StartWindow *SW;
+    SW = new StartWindow();
+    SW->showFullScreen();
+    close();
 }
 
 void leaderboardWindow::setAnimation(int arrayPos)
@@ -257,18 +258,19 @@ void leaderboardWindow::setAnimation(int arrayPos)
     GIF->setScaledSize(ui->label->size());
     ui->label->setMovie(GIF);
     GIF->start();
-    timer2->start(3000);
+    timer2->start(2300);
 
 }
 
 void leaderboardWindow::on_CloseGUI_clicked()
 {
-    if(gameIsRunning == 0){
-       closeUI = 1;
-    }else{
-         QMessageBox::warning(this,tr("Searching!"),tr("Can't quit game until game has finished!"),QMessageBox::Ok);
+    if(gameIsRunning)
+    {
+        QMessageBox::warning(this,tr("ERROR "),tr("Please stop the game before exiting."),QMessageBox::Ok);
+        return;
+    } else {
+        QApplication::quit();
     }
-
 }
 
 void leaderboardWindow::stopAnimation()
@@ -277,4 +279,5 @@ void leaderboardWindow::stopAnimation()
     GIF->stop();
     timer2->stop();
     ui->label->setStyleSheet("background-color: lightblue");
+    delete GIF;
 }

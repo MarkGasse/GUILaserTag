@@ -98,8 +98,9 @@ void SearchPlayerWindow::on_pushButtonStart_clicked()
 {
     if(status == "not searching"){
         close();
-        lbw = new leaderboardWindow(this);
+        lbw = new leaderboardWindow();
         lbw->showFullScreen();
+        delete this;
     }else{
         QMessageBox::warning(this,tr("Searching!"),tr("Can't start game while looking for players!"),QMessageBox::Ok);
     }
@@ -110,15 +111,12 @@ void SearchPlayerWindow::on_pushButton_clicked()
 {
     close();
     StartWindow *SW;
-    SW = new StartWindow(this);
+    SW = new StartWindow();
+    delete this;
     SW->showFullScreen();
 }
 
 void SearchPlayerWindow::on_CloseGUI_clicked()
 {
-    if(status == "not searching"){
-        closeUI = 1;
-    }else{
-        QMessageBox::warning(this,tr("Searching!"),tr("Can't quit game while looking for players!"),QMessageBox::Ok);
-    }
+    QApplication::quit();
 }

@@ -39,6 +39,9 @@ public:
     explicit leaderboardWindow(QWidget *parent = nullptr);
     ~leaderboardWindow();
     void writeToEventBox(QString message, QString textColor, QString type);
+
+    QTimer *timer1;
+    QTimer *timer2;
 };
 
 #endif // LEADERBOARDWINDOW_H
