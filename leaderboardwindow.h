@@ -19,7 +19,7 @@ private:
     QString Animations[2];
     int arrayPos = 0;
     QMovie *GIF = new QMovie("");
-    bool stateTime = 1;
+    int stateTime = 1;
     QListWidgetItem lb_item;
     Back_End *B;
     bool game_ended = 0;
