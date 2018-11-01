@@ -43,13 +43,15 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     ui->pushButtonBACK2->setGeometry(0,0,150,50);
     ui->Label_date->setGeometry(w-400,0,350,50);
     ui->labelTopBar->setGeometry(0,0,w,50);
-    ui->groupBox->setGeometry(w/2+250,h/2-280,625,600);
+    ui->groupBox->setGeometry(w/2+250,h/2-430,625,950);
     ui->groupBox_2->setGeometry(w/2-235,60,470,80);
-    ui->groupBoxGIF->setGeometry(w/2-850,h/2-280,570,200);
-    ui->label->setGeometry(20,20,530,160);
-    ui->groupBoxEvents->setGeometry(w/2-850,h/2,570,400);
+    ui->groupBoxGIF->setGeometry(w/2-850,h/2-430,570,400);
+    ui->label->setGeometry(20,20,530,360);
+    ui->groupBoxEvents->setGeometry(w/2-850,h/2,570,500);
+    ui->textBrowserEvents->setGeometry(20,20,530,460);
     ui->labelGM->setGeometry(w/2-300,0,600,50);
     ui->labelHPMatch->setGeometry(w/2+400,0,300,50);
+    ui->listWidgetLeaderboard->setGeometry(20,20,585,910);
 
     ui->label->setStyleSheet("background-color: lightblue");
     ui->pushButtonBack->setStyleSheet("background-color: lightGray");
