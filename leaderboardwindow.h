@@ -16,12 +16,13 @@ class leaderboardWindow : public QMainWindow
 
 private:
     Ui::leaderboardWindow *ui;
-    QString Animations[1];
+    QString Animations[2];
     int arrayPos = 0;
     QMovie *GIF = new QMovie("");
     bool stateTime = 1;
     QListWidgetItem lb_item;
     Back_End *B;
+    bool game_ended = 0;
 
 private slots:
     void on_pushButton_3_clicked();
@@ -32,6 +33,7 @@ private slots:
     void on_pushButtonBACK2_clicked();
     void setAnimation(int arrayPos);
     void on_CloseGUI_clicked();
+    void stopAnimation();
 
 public:
     explicit leaderboardWindow(QWidget *parent = nullptr);

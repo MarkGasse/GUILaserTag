@@ -116,5 +116,9 @@ void SearchPlayerWindow::on_pushButton_clicked()
 
 void SearchPlayerWindow::on_CloseGUI_clicked()
 {
-    closeUI = 1;
+    if(status == "not searching"){
+        closeUI = 1;
+    }else{
+        QMessageBox::warning(this,tr("Searching!"),tr("Can't quit game while looking for players!"),QMessageBox::Ok);
+    }
 }

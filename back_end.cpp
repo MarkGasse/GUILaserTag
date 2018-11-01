@@ -49,7 +49,7 @@ void Back_End::closeWindow()
 void Back_End::check()
 {
     if(closeUI == 1){
-        timer1->stop();
+      timer1->stop();
       close();
     }
 

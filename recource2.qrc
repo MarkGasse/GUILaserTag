@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/gif/killAnimation">
+        <file>AnimationKill/schieten 2.gif</file>
+    </qresource>
+</RCC>

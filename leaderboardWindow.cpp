@@ -18,6 +18,7 @@
 #include <vector>
 
 static QTimer *timer1 = new QTimer();
+static QTimer *timer2 = new QTimer();
 
 leaderboardWindow::leaderboardWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -25,9 +26,9 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // setting gifs in array
-    //Animations[0] = ("");
-    //Animations[1] = ("");
+    //setting gifs in array
+    Animations[0] = ("");
+    Animations[1] = (":/gif/killAnimation/AnimationKill/schieten 2.gif");
 
 
 
@@ -105,6 +106,7 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
 
     connect (timer1, SIGNAL(timeout()),this,SLOT(timerupdater()));
     connect (timer1, SIGNAL(timeout()), this, SLOT(updateLB()));
+    connect(timer2, SIGNAL(timeout()),this,SLOT(stopAnimation()));
 
 }
 
@@ -127,6 +129,7 @@ void leaderboardWindow::on_pushButton_3_clicked() {
             return;
         }
         writeToEventBox("game started!","Green","Arduino: ");
+        setAnimation(1);
         timer1->start(1000);
         stateTime = 0;
     }
@@ -210,6 +213,7 @@ void leaderboardWindow::timerupdater() {
 
     if(seconds == 0 && minutes == 0) {
         writeToEventBox("game has ended!","red","Arduino: ");
+        game_ended = 1;
         timer1->stop();
     }
 
@@ -236,14 +240,35 @@ void leaderboardWindow::on_pushButtonBACK2_clicked()
 
 void leaderboardWindow::setAnimation(int arrayPos)
 {
-
     GIF = new QMovie(Animations[arrayPos]);
     GIF->setScaledSize(ui->label->size());
     ui->label->setMovie(GIF);
     GIF->start();
+    timer2->start(2300);
+
 }
 
 void leaderboardWindow::on_CloseGUI_clicked()
 {
-  closeUI = 1;
+    if(game_ended == 1){
+       closeUI = 1;
+    }else{
+         QMessageBox::warning(this,tr("Searching!"),tr("Can't quit game until game has finished!"),QMessageBox::Ok);
+    }
+
+}
+
+void leaderboardWindow::stopAnimation()
+{
+    if(arrayPos != 0){
+        setAnimation(0);
+        GIF = new QMovie("");
+        GIF->setScaledSize(ui->label->size());
+        ui->label->setMovie(GIF);
+
+    }
+
+    GIF->stop();
+    timer2->stop();
+    ui->label->setStyleSheet("background-color: lightblue");
 }
