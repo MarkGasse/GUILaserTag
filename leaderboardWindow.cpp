@@ -131,6 +131,8 @@ void leaderboardWindow::on_pushButton_3_clicked()
         return;
     }
 
+
+
     if(gameStarted == 1){
         writeToEventBox("game started!","Green","Arduino: ");
         setAnimation(1);
@@ -145,6 +147,7 @@ void leaderboardWindow::on_pushButton_4_clicked() {
     if(gameStarted == 0){
         //do timer stuff
         timer1->stop();
+        timer2->stop();
         writeToEventBox("game is paused!","purple","Arduino: ");
         gameStarted = 1;
         gameIsRunning = 0;
@@ -195,7 +198,7 @@ void leaderboardWindow::updateLB()
     {
         QString str;
 
-        QTextStream(&str) <<"#"<<pos<<"              "<<p.name<<"                           "<<p.kills/p.deaths<<"                                "<<p.points;
+        QTextStream(&str) <<"#"<<pos<<"              "<<p.name<<"                         "<<p.kills<<"/"<<p.deaths<<"                          "<<p.points;
         QString str1 = "test";
         auto lbi = new QListWidgetItem(str);
         ui->listWidgetLeaderboard->addItem(lbi);
@@ -229,6 +232,8 @@ void leaderboardWindow::timerupdater() {
 
 void leaderboardWindow::on_pushButtonBack_clicked()
 {
+    timer1->stop();
+    timer2->stop();
     close();
     SearchPlayerWindow *SPW;
     SPW = new SearchPlayerWindow(this);
@@ -237,6 +242,8 @@ void leaderboardWindow::on_pushButtonBack_clicked()
 
 void leaderboardWindow::on_pushButtonBACK2_clicked()
 {
+    timer1->stop();
+    timer2->stop();
     close();
     StartWindow *SW;
     SW = new StartWindow(this);
@@ -250,7 +257,7 @@ void leaderboardWindow::setAnimation(int arrayPos)
     GIF->setScaledSize(ui->label->size());
     ui->label->setMovie(GIF);
     GIF->start();
-    timer2->start(2300);
+    timer2->start(3000);
 
 }
 
@@ -269,6 +276,5 @@ void leaderboardWindow::stopAnimation()
 
     GIF->stop();
     timer2->stop();
-    delete GIF;
     ui->label->setStyleSheet("background-color: lightblue");
 }
