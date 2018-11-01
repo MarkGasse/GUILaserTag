@@ -260,15 +260,9 @@ void leaderboardWindow::on_CloseGUI_clicked()
 
 void leaderboardWindow::stopAnimation()
 {
-    if(arrayPos != 0){
-        setAnimation(0);
-        GIF = new QMovie("");
-        GIF->setScaledSize(ui->label->size());
-        ui->label->setMovie(GIF);
-
-    }
 
     GIF->stop();
     timer2->stop();
+    delete GIF;
     ui->label->setStyleSheet("background-color: lightblue");
 }
