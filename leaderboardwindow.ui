@@ -118,7 +118,7 @@
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">QPushButton rgb(0, 255, 0);</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>START</string>

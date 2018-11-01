@@ -154,7 +154,6 @@ void StartWindow::on_pushButtonDelete_clicked()
 void StartWindow::on_pushButtonCreate_clicked()
 {
     CreateW = new CreateGM();
-    delete this;
     CreateW->show();
 
 }
