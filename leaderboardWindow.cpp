@@ -213,6 +213,7 @@ void leaderboardWindow::timerupdater() {
 
     if(seconds == 0 && minutes == 0) {
         writeToEventBox("game has ended!","red","Arduino: ");
+        stateTime = 3;
         game_ended = 1;
         timer1->stop();
     }
