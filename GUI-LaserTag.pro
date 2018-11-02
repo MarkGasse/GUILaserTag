@@ -33,7 +33,8 @@ SOURCES += \
     searchplayerwindow.cpp \
     creategm.cpp \
     leaderboardWindow.cpp \
-    back_end.cpp
+    back_end.cpp \
+    ../lasergameServerClass/tcpServer.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -42,7 +43,8 @@ HEADERS += \
     searchplayerwindow.h \
     creategm.h \
     leaderboardwindow.h \
-    back_end.h
+    back_end.h \
+    ../lasergameServerClass/tcpServer.hpp
 
 FORMS += \
         mainwindow.ui \
@@ -62,3 +64,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     resource.qrc \
     recource2.qrc
+
+win32: LIBS += -lWS2_32

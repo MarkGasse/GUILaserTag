@@ -16,6 +16,7 @@
 #include "mainwindow.h"
 #include "QBrush"
 #include <vector>
+#include "../lasergameServerClass/tcpServer.hpp"
 
 leaderboardWindow::leaderboardWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -29,7 +30,6 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     //setting gifs in array
     Animations[0] = ("");
     Animations[1] = (":/gif/killAnimation/AnimationKill/schieten 2.gif");
-
 
 
     // get screen size

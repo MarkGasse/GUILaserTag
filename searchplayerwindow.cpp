@@ -3,17 +3,26 @@
 #include <QPixmap>
 #include <QDateTime>
 #include "QRect"
+#include "QDebug"
 #include "QScreen"
 #include "startwindow.h"
 #include "QMessageBox"
+#include "../lasergameServerClass/tcpServer.hpp"
+
+struct player
+{
+    QString name;
+    int kills;
+    int deaths;
+    int points;
+
+};
 
 SearchPlayerWindow::SearchPlayerWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::SearchPlayerWindow)
 {
     ui->setupUi(this);
-
-
 
     // get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -56,6 +65,7 @@ SearchPlayerWindow::SearchPlayerWindow(QWidget *parent) :
     //timer
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()),this,SLOT(timerFunction()));
+    connect(timer, SIGNAL(timeout()),this,SLOT(doNetworkStuff()));
     timer->start(1000);
 }
 
@@ -72,6 +82,17 @@ void SearchPlayerWindow::timerFunction()
     ui->Label_date->setText(date_text);
 }
 
+void SearchPlayerWindow::doNetworkStuff()
+{
+//    if(c.client[c.maxClients - 1] == 0 || 1)
+//    {
+//        S.listenNewClient();
+//    }
+
+//    QString ip = c.ip[0];
+//    qDebug() << ip;
+}
+
 void SearchPlayerWindow::on_pushButtonSearch_clicked()
 {
     if(status != "searching"){
@@ -79,8 +100,6 @@ void SearchPlayerWindow::on_pushButtonSearch_clicked()
        ui->textBrowserS->append("searching for players.....");
        status = "searching";
     }
-
-
 
 }
 

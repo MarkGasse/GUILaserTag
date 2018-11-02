@@ -6,6 +6,7 @@
 #include "back_end.h"
 #include <QTimer>
 #include <QString>
+#include "../lasergameServerClass/tcpServer.hpp"
 
 namespace Ui {
 class SearchPlayerWindow;
@@ -32,6 +33,11 @@ private slots:
 public:
     explicit SearchPlayerWindow(QWidget *parent = nullptr);
     ~SearchPlayerWindow();
+
+    void doNetworkStuff();
+
+    //clients c = clients(2);
+    //tcpServer S = tcpServer(8080, c);
 
 public slots:
     void timerFunction();
