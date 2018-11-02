@@ -6,9 +6,6 @@
 #include "startwindow.h"
 #include "QDebug"
 
-bool closeUI = 0;
-static QTimer *timer1 = new QTimer();
-
 Back_End::Back_End(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Back_End)
@@ -29,11 +26,6 @@ Back_End::Back_End(QWidget *parent) :
     ui->label->setStyleSheet("background-color: lightblue");
     this->setStyleSheet("background-color: white");
 
-
-    connect(timer1, SIGNAL(timeout()),this,SLOT(check()));
-    timer1->start(1000);
-
-
 }
 
 Back_End::~Back_End()
@@ -41,12 +33,4 @@ Back_End::~Back_End()
     delete ui;
 }
 
-void Back_End::closeWindow()
-{
-    close();
-}
 
-void Back_End::check()
-{
-
-}
