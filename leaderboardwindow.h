@@ -16,7 +16,7 @@ class leaderboardWindow : public QMainWindow
 
 private:
     Ui::leaderboardWindow *ui;
-    QString Animations[2];
+    QString Animations[3];
     int arrayPos = 0;
     QMovie *GIF = new QMovie("");
     bool gameStarted = 1;

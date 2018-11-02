@@ -16,7 +16,7 @@
 #include "mainwindow.h"
 #include "QBrush"
 #include <vector>
-#include "../lasergameServerClass/tcpServer.hpp"
+//#include "../lasergameServerClass/tcpServer.hpp"
 
 leaderboardWindow::leaderboardWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -30,6 +30,7 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     //setting gifs in array
     Animations[0] = ("");
     Animations[1] = (":/gif/killAnimation/AnimationKill/schieten 2.gif");
+     Animations[2] = (":/start/AnimationStart/schieten 2_1.gif");
 
 
     // get screen size
@@ -134,8 +135,8 @@ void leaderboardWindow::on_pushButton_3_clicked()
 
 
     if(gameStarted == 1){
-        writeToEventBox("game started!","Green","Arduino: ");
-        setAnimation(1);
+        writeToEventBox("game started!","Green","GUI: ");
+        setAnimation(2);
         timer1->start(1000);
          gameStarted = 0;
         gameIsRunning = 1;
@@ -149,7 +150,7 @@ void leaderboardWindow::on_pushButton_4_clicked()
         //do timer stuff
         timer1->stop();
         timer2->stop();
-        writeToEventBox("game is paused!","purple","Arduino: ");
+        writeToEventBox("game is paused!","purple","GUI: ");
         gameStarted = 1;
         gameIsRunning = 0;
     }
@@ -222,7 +223,8 @@ void leaderboardWindow::timerupdater() {
     }
 
     if(seconds == 0 && minutes == 0) {
-        writeToEventBox("game has ended!","red","Arduino: ");
+        setAnimation(1);
+        writeToEventBox("game has ended!","red","GUI: ");
         gameIsRunning = 0;
         timer1->stop();
     }
@@ -266,7 +268,7 @@ void leaderboardWindow::setAnimation(int arrayPos)
     GIF->setScaledSize(ui->label->size());
     ui->label->setMovie(GIF);
     GIF->start();
-    timer2->start(2300);
+    timer2->start(2200);
 
 }
 

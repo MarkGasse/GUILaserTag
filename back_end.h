@@ -2,7 +2,6 @@
 #define BACK_END_H
 
 #include <QMainWindow>
-//#include "QTimer"
 
 extern bool closeUI;
 
@@ -16,16 +15,10 @@ class Back_End : public QMainWindow
 
 private:
     Ui::Back_End *ui;
-  //  QTimer *timer;
-  //  MainWindow *W;
 
 public:
     explicit Back_End(QWidget *parent = nullptr);
     ~Back_End();
-    void closeWindow();
-
-public slots:
-    void check();
 
 };
 

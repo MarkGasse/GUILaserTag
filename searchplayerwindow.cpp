@@ -7,7 +7,7 @@
 #include "QScreen"
 #include "startwindow.h"
 #include "QMessageBox"
-#include "../lasergameServerClass/tcpServer.hpp"
+//#include "../lasergameServerClass/tcpServer.hpp"
 
 struct player
 {

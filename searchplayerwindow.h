@@ -6,7 +6,7 @@
 #include "back_end.h"
 #include <QTimer>
 #include <QString>
-#include "../lasergameServerClass/tcpServer.hpp"
+//#include "../lasergameServerClass/tcpServer.hpp"
 
 namespace Ui {
 class SearchPlayerWindow;

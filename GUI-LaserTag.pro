@@ -34,7 +34,7 @@ SOURCES += \
     creategm.cpp \
     leaderboardWindow.cpp \
     back_end.cpp \
-    ../lasergameServerClass/tcpServer.cpp
+    #../lasergameServerClass/tcpServer.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -44,7 +44,7 @@ HEADERS += \
     creategm.h \
     leaderboardwindow.h \
     back_end.h \
-    ../lasergameServerClass/tcpServer.hpp
+   # ../lasergameServerClass/tcpServer.hpp
 
 FORMS += \
         mainwindow.ui \
@@ -63,6 +63,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resource.qrc \
-    recource2.qrc
+    recource2.qrc \
+    animationstart.qrc
 
 win32: LIBS += -lWS2_32

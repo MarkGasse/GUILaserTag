@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/start">
+        <file>AnimationStart/schieten 2_1.gif</file>
+    </qresource>
+</RCC>
