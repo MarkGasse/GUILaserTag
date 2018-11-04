@@ -64,6 +64,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     resource.qrc \
     recource2.qrc \
-    animationstart.qrc
+    animationstart.qrc \
+    resource4.qrc
 
 win32: LIBS += -lWS2_32

@@ -28,7 +28,7 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     timer2 = new QTimer();
 
     //setting gifs in array
-    Animations[0] = ("");
+    Animations[0] = (":/AnimationEnd/AnimationEnd/schieten 2 (1).gif");
     Animations[1] = (":/gif/killAnimation/AnimationKill/schieten 2.gif");
      Animations[2] = (":/start/AnimationStart/schieten 2_1.gif");
 
@@ -223,7 +223,7 @@ void leaderboardWindow::timerupdater() {
     }
 
     if(seconds == 0 && minutes == 0) {
-        setAnimation(1);
+        setAnimation(0);
         writeToEventBox("game has ended!","red","GUI: ");
         gameIsRunning = 0;
         timer1->stop();
