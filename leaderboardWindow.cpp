@@ -247,7 +247,6 @@ void leaderboardWindow::on_pushButtonBack_clicked()
     SPW = new SearchPlayerWindow();
     SPW->showFullScreen();
     close();
-
 }
 
 void leaderboardWindow::on_pushButtonBACK2_clicked()

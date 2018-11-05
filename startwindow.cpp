@@ -99,8 +99,9 @@ void StartWindow::on_pushButtonStart_clicked()
         game_mode = selectedItem;
 
         close();
-        searchW = new SearchPlayerWindow(this);
+        searchW = new SearchPlayerWindow();
         searchW->showFullScreen();
+        delete this;
     }
     else
     {

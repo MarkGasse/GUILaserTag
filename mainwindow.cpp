@@ -169,9 +169,9 @@ void MainWindow::on_LoginButton_clicked()
         {
             hide();
             startW = new StartWindow();
-            delete this;
             startW->showFullScreen();
             MBoxStatus = 0;
+            delete this;
             break;
         }
         else
@@ -192,7 +192,7 @@ void MainWindow::on_LoginButton_clicked()
 
 void MainWindow::on_pushButtonRegistreer_clicked()
 {
-    registreerW = new registreerWindow(this);
+    registreerW = new registreerWindow();
     registreerW->show();
 }
 

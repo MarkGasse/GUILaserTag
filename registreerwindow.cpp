@@ -41,6 +41,13 @@ void registreerWindow::on_pushButtonRegistreer_clicked()
       wi.write(wi.filePassword, password,1);
       wi.write(wi.fileUsername, username,1);
       hide();
+      delete this;
     }
 
+}
+
+void registreerWindow::on_pushButtonCancel_clicked()
+{
+    hide();
+    delete this;
 }

@@ -35,6 +35,8 @@ private slots:
     /// Checks if both passwords match and confirms the users' registration.
     void on_pushButtonRegistreer_clicked();
 
+    void on_pushButtonCancel_clicked();
+
 public:
     /// \brief
     /// registreerWindow constructor
