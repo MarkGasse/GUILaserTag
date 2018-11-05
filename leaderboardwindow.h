@@ -77,9 +77,10 @@ private slots:
     void on_pushButtonBACK2_clicked();
 
     /// \brief
-    ///
+    /// Set new animation
     /// \details
-    ///
+    /// Loads & scales a new gif in the label.
+    /// Play gif until timer has reached zero.
     void setAnimation(int arrayPos);
 
     /// \brief
@@ -89,9 +90,10 @@ private slots:
     void on_CloseGUI_clicked();
 
     /// \brief
-    ///
+    /// Stops the animation
     /// \details
-    ///
+    /// When the timer has reached zero this function is called.
+    /// This function deletes the gif & sets the background.
     void stopAnimation();
 
 public:
@@ -106,9 +108,9 @@ public:
     ~leaderboardWindow();
 
     /// \brief
-    ///
+    /// Write to EventBox
     /// \details
-    ///
+    /// Function for writing message to EventBox with a color & type.
     void writeToEventBox(QString message, QString textColor, QString type);
 
     QTimer *timer1;

@@ -134,7 +134,8 @@ void leaderboardWindow::on_pushButton_3_clicked()
 
 
 
-    if(gameStarted == 1){
+    if(gameStarted == 1)
+    {
         writeToEventBox("game started!","Green","GUI: ");
         setAnimation(2);
         timer1->start(1000);
@@ -146,7 +147,8 @@ void leaderboardWindow::on_pushButton_3_clicked()
 
 void leaderboardWindow::on_pushButton_4_clicked()
 {
-    if(gameStarted == 0){
+    if(gameStarted == 0)
+    {
         //do timer stuff
         timer1->stop();
         timer2->stop();

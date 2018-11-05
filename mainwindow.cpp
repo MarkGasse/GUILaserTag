@@ -79,7 +79,8 @@ void MainWindow::defaultLayout(int w, int h)
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
-    if(event->key() == Qt::Key_Return){
+    if(event->key() == Qt::Key_Return)
+    {
 
         on_LoginButton_clicked();
     }
@@ -164,14 +165,17 @@ void MainWindow::on_LoginButton_clicked()
         myfile2.close();
 
     for(int j = 0; j < 10; j++ ){
-        if(username == user[j]  && password == pass[j] && username != "" && password != ""){
+        if(username == user[j]  && password == pass[j] && username != "" && password != "")
+        {
             hide();
             startW = new StartWindow();
             delete this;
             startW->showFullScreen();
             MBoxStatus = 0;
             break;
-        }else{
+        }
+        else
+        {
             MBoxStatus = 1;
             ui->statusBarLogin->setStyleSheet("color: red");
             ui->statusBarLogin->showMessage("username or password is not correct!",4000);
@@ -179,7 +183,8 @@ void MainWindow::on_LoginButton_clicked()
             ui->lineEdit_Username->setText("");
         }
     }
-    if(MBoxStatus == 1){
+    if(MBoxStatus == 1)
+    {
         QMessageBox::warning(this,tr("ERROR 404"),tr("username or password is not correct!"),QMessageBox::Ok);
         MBoxStatus = 0;
     }

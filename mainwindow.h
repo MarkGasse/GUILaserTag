@@ -48,19 +48,19 @@ private slots:
     /// \brief
     /// Log in button
     /// \details
-    ///
+    /// Deletes the current window and starts the game for the next window.
     void on_LoginButton_clicked();
 
     /// \brief
     /// Register button
     /// \details
-    ///
+    /// On click returns you to the login window & registers new user.
     void on_pushButtonRegistreer_clicked();
 
     /// \brief
     /// Close Application button
     /// \details
-    ///
+    /// Calls QApplication:quit() to terminate the program.
     void on_CloseGUI_clicked();
 
 public:

@@ -20,7 +20,7 @@ class registreerWindow;
 /// \brief
 /// registreerWindow class
 /// \details
-/// implements a pop-up window to register a window, inherits from QDialog.
+/// implements a pop-up window to register a user, inherits from QDialog.
 class registreerWindow : public QDialog
 {
     Q_OBJECT

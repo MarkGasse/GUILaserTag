@@ -34,7 +34,8 @@ void registreerWindow::on_pushButtonRegistreer_clicked()
     QString password2 = ui->lineEditPass2 ->text();
     QString code = ui->lineEditCode ->text();
 
-    if(password == password2 && code == "doyoueven" && username != "" && password != ""){
+    if(password == password2 && code == "doyoueven" && username != "" && password != "")
+    {
       QMessageBox::information(this,tr("Gelukt!"),tr("Registratie succesvol."),QMessageBox::Close);
       MainWindow wi;
       wi.write(wi.filePassword, password,1);

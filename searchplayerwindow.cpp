@@ -95,7 +95,8 @@ void SearchPlayerWindow::doNetworkStuff()
 
 void SearchPlayerWindow::on_pushButtonSearch_clicked()
 {
-    if(status != "searching"){
+    if(status != "searching")
+    {
        ui->textBrowserS->setTextColor("Green");
        ui->textBrowserS->append("searching for players.....");
        status = "searching";
@@ -105,7 +106,8 @@ void SearchPlayerWindow::on_pushButtonSearch_clicked()
 
 void SearchPlayerWindow::on_pushButtonStopS_clicked()
 {
-    if(status != "not searching"){
+    if(status != "not searching")
+    {
        ui->textBrowserS->setTextColor("Red");
        ui->textBrowserS->append("..... stop searching for players");
        status = "not searching";
@@ -115,12 +117,15 @@ void SearchPlayerWindow::on_pushButtonStopS_clicked()
 
 void SearchPlayerWindow::on_pushButtonStart_clicked()
 {
-    if(status == "not searching"){
+    if(status == "not searching")
+    {
         close();
         lbw = new leaderboardWindow();
         lbw->showFullScreen();
         delete this;
-    }else{
+    }
+    else
+    {
         QMessageBox::warning(this,tr("Searching!"),tr("Can't start game while looking for players!"),QMessageBox::Ok);
     }
 

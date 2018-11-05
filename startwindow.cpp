@@ -92,7 +92,8 @@ void StartWindow::timerFunction()
 // open searchplayerwindow
 void StartWindow::on_pushButtonStart_clicked()
 {
-    if(ui->listWidgetGame->selectedItems().size() != 0){
+    if(ui->listWidgetGame->selectedItems().size() != 0)
+    {
         QString selectedItem = ui->listWidgetGame->currentItem()->text();
 
         game_mode = selectedItem;
@@ -100,7 +101,9 @@ void StartWindow::on_pushButtonStart_clicked()
         close();
         searchW = new SearchPlayerWindow(this);
         searchW->showFullScreen();
-    }else{
+    }
+    else
+    {
        QMessageBox::information(this,tr("Not selected!"),tr("Select gamemode before starting game."),QMessageBox::Ok);
     }
 
@@ -122,12 +125,16 @@ void StartWindow::on_pushButtonDelete_clicked()
     QTextStream in(&file);
 
 
-    while(!in.atEnd()){
+    while(!in.atEnd())
+    {
         QString item = in.readLine();
 
-        if(item != selectedItem){
+        if(item != selectedItem)
+        {
            W.write("TmpGameModeList",item,1); //open and close tmpgamemodelist
-        } else {
+        }
+        else
+        {
             std::string file_to_remove = item.toStdString();
             //const char *f = file_to_remove.c_str();
             //if(std::remove(f)) qDebug() << "deleted";
@@ -140,7 +147,8 @@ void StartWindow::on_pushButtonDelete_clicked()
 
         file2.open(QIODevice::ReadOnly); //open tmpgamemodelist
         QTextStream in2(&file2);
-        while(!in2.atEnd()){
+        while(!in2.atEnd())
+        {
             QString item = in2.readLine();
 
                W.write("GAMEMODES",item,1); //open and close gamemodes
@@ -165,7 +173,8 @@ void StartWindow::on_CloseGUI_clicked()
 
 void StartWindow::keyPressEvent(QKeyEvent *event)
 {
-    if(event->key() == Qt::Key_Return){
+    if(event->key() == Qt::Key_Return)
+    {
 
         on_pushButtonStart_clicked();
     }

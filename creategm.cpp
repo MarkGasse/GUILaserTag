@@ -52,9 +52,11 @@ void CreateGM::on_pushButtonCreate_clicked()
     QString HP       = ui->comboBoxHP->currentText();
     QString fileName = ui->lineEditName->text();
     QString array[4] = {fileName,mode,time,HP};
-    if(fileName != ""){
+    if(fileName != "")
+    {
         MainWindow W;
-        for(int i = 0; i < 4; i++){
+        for(int i = 0; i < 4; i++)
+        {
              W.write(fileName,array[i],1);
         }
 
