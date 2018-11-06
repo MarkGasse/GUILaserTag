@@ -35,6 +35,7 @@ SOURCES += \
     leaderboardWindow.cpp \
     back_end.cpp \
     #../lasergameServerClass/tcpServer.cpp
+    ../lasergameServerClass/tcpServer.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -45,6 +46,7 @@ HEADERS += \
     leaderboardwindow.h \
     back_end.h \
    # ../lasergameServerClass/tcpServer.hpp
+    ../lasergameServerClass/tcpServer.hpp
 
 FORMS += \
         mainwindow.ui \

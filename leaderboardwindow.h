@@ -14,6 +14,7 @@
 #include <QMovie>
 #include "back_end.h"
 #include "QListWidgetItem"
+#include "../lasergameServerClass/tcpServer.hpp"
 
 namespace Ui {
 class leaderboardWindow;

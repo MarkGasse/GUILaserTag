@@ -15,7 +15,10 @@
 #include "back_end.h"
 #include <QTimer>
 #include <QString>
-//#include "../lasergameServerClass/tcpServer.hpp"
+#include "../lasergameServerClass/tcpServer.hpp"
+
+extern client clients[6];
+extern tcpServer S;
 
 namespace Ui {
 class SearchPlayerWindow;
@@ -32,9 +35,10 @@ class SearchPlayerWindow : public QMainWindow
 private:
     Ui::SearchPlayerWindow *ui;
     leaderboardWindow *lbw;
-    QTimer *timer;
+    QTimer *timer_update;
     QString status = "not searching";
     Back_End *B;
+
 
 private slots:
     /// \brief
@@ -78,16 +82,13 @@ public:
     /// Default destructor.
     ~SearchPlayerWindow();
 
+public slots:
     /// \brief
     /// TCP connection
     /// \details
     /// Sets up a TCP socket server to communicate with clients.
     void doNetworkStuff();
 
-    //clients c = clients(2);
-    //tcpServer S = tcpServer(8080, c);
-
-public slots:
     /// \brief
     /// Current time display
     /// \details

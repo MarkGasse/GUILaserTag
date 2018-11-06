@@ -9,14 +9,8 @@
 #include "QMessageBox"
 //#include "../lasergameServerClass/tcpServer.hpp"
 
-struct player
-{
-    QString name;
-    int kills;
-    int deaths;
-    int points;
-
-};
+client clients[6];
+tcpServer S = tcpServer("8080", clients, 1);
 
 SearchPlayerWindow::SearchPlayerWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -63,10 +57,9 @@ SearchPlayerWindow::SearchPlayerWindow(QWidget *parent) :
     ui->labelLogo->setPixmap(LogoPix.scaled(LogoWidth,LogoHeight,Qt::KeepAspectRatio));
 
     //timer
-    timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()),this,SLOT(timerFunction()));
-    connect(timer, SIGNAL(timeout()),this,SLOT(doNetworkStuff()));
-    timer->start(1000);
+    timer_update = new QTimer();
+    connect(timer_update, SIGNAL(timeout()),this,SLOT(timerFunction()));
+    connect(timer_update, SIGNAL(timeout()),this,SLOT(doNetworkStuff()));
 }
 
 SearchPlayerWindow::~SearchPlayerWindow()
@@ -84,13 +77,18 @@ void SearchPlayerWindow::timerFunction()
 
 void SearchPlayerWindow::doNetworkStuff()
 {
-//    if(c.client[c.maxClients - 1] == 0 || 1)
-//    {
-//        S.listenNewClient();
-//    }
+    S.listenNewClients();
 
-//    QString ip = c.ip[0];
-//    qDebug() << ip;
+    qDebug() << S.clients[0].con;
+
+    if(!S.start && S.clients[0].con)
+    {
+        ui->textBrowserS->append("All players connected.");
+        S.startGame();
+        S.start = true;
+        status = "not searching";
+        timer_update->stop();
+    }
 }
 
 void SearchPlayerWindow::on_pushButtonSearch_clicked()
@@ -99,6 +97,7 @@ void SearchPlayerWindow::on_pushButtonSearch_clicked()
     {
        ui->textBrowserS->setTextColor("Green");
        ui->textBrowserS->append("searching for players.....");
+       timer_update->start(1000);
        status = "searching";
     }
 
@@ -111,6 +110,7 @@ void SearchPlayerWindow::on_pushButtonStopS_clicked()
        ui->textBrowserS->setTextColor("Red");
        ui->textBrowserS->append("..... stop searching for players");
        status = "not searching";
+       timer_update->stop();
     }
 
 }

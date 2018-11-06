@@ -16,7 +16,17 @@
 #include "mainwindow.h"
 #include "QBrush"
 #include <vector>
-//#include "../lasergameServerClass/tcpServer.hpp"
+#include "../lasergameServerClass/tcpServer.hpp"
+#include "searchplayerwindow.h"
+
+struct player
+{
+    QString name;
+    int kills;
+    int deaths;
+    int points;
+
+};
 
 leaderboardWindow::leaderboardWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -161,34 +171,40 @@ void leaderboardWindow::on_pushButton_4_clicked()
 
 void leaderboardWindow::updateLB()
 {
-    struct player
+    S.listenNewClients();
+
+    auto m = msg("CMD:9,0;");
+    S.sendAll(m);
+
+    static std::vector<player> players;
+
+    for(int i = 0; i < S.maxClients; i++)
     {
-        QString name;
-        int kills;
-        int deaths;
-        int points;
-
-    };
-
-    std::vector<player> players;
-
-    player p1 = {"player1", 10, 5, 200};
-    player p2 = {"player2", 10, 5, 100};
-    player p3 = {"player3", 10, 5, 500};
-
-    players.push_back(p1);
-    players.push_back(p2);
-    players.push_back(p3);
-
-    for(unsigned int i = 0; i < players.size()-1; i++)
-    {
-        for(unsigned int j = 0; j < players.size()-i-1; j++)
+        if(S.clients[i].con)
         {
-            if(players[j].points < players[j+1].points)
+            QString name = "player";
+            name.append(QString("%1").arg(i));
+            int k = 10;             //S.clients[i].kills
+            int d = 5;              //S.clients[i].deaths
+            int p = ((k/d)*100);
+
+            player pl = {name, k, d, p};
+            players.push_back(pl);
+        }
+    }
+
+    if(players.size() > 1)
+    {
+        for(unsigned int i = 0; i < players.size()-1; i++)
+        {
+            for(unsigned int j = 0; j < players.size()-i-1; j++)
             {
-                auto tmp = players[j];
-                players[j] = players[j+1];
-                players[j+1] = tmp;
+                if(players[j].points < players[j+1].points)
+                {
+                    auto tmp = players[j];
+                    players[j] = players[j+1];
+                    players[j+1] = tmp;
+                }
             }
         }
     }
@@ -208,7 +224,7 @@ void leaderboardWindow::updateLB()
         ui->listWidgetLeaderboard->addItem(lbi);
         pos++;
     }
-
+    players.clear();
 }
 
 void leaderboardWindow::timerupdater() {
@@ -286,7 +302,7 @@ void leaderboardWindow::on_CloseGUI_clicked()
 
 void leaderboardWindow::stopAnimation()
 {
-
+    S.gameOver();
     GIF->stop();
     timer2->stop();
     ui->label->setStyleSheet("background-color: lightblue");
