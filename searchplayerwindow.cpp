@@ -21,8 +21,6 @@ SearchPlayerWindow::SearchPlayerWindow(QWidget *parent) :
     ui->setupUi(this);
 
     S.maxClients = amountOfPlayers;
-    qDebug() << S.maxClients;
-
 
     // get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -89,7 +87,7 @@ void SearchPlayerWindow::doNetworkStuff()
     bool allConnected = true;
     for(int i = 0; i < S.maxClients; i++)
     {
-        qDebug() << S.clients[i].con;
+        qDebug() << clients[i].con;
         if(S.clients[i].con == false)
         {
             allConnected = false;

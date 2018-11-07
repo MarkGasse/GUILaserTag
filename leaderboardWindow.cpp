@@ -102,7 +102,16 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     QString game_name;
     QString game_Titel;
     QString game_playerHP;
+    int playerhp = game_playerHP.toInt();
     QString game_players;
+
+    for(auto & c : clients)
+    {
+        if(c.con == 1)
+        {
+            c.hp = playerhp;
+        }
+    }
 
     gm.open(QIODevice::ReadOnly);
 
@@ -341,7 +350,6 @@ void leaderboardWindow::on_CloseGUI_clicked()
 
 void leaderboardWindow::stopAnimation()
 {
-    S.gameOver();
     GIF->stop();
     timer2->stop();
     ui->label->setStyleSheet("background-color: lightblue");

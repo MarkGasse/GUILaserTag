@@ -102,7 +102,6 @@ void StartWindow::on_pushButtonStart_clicked()
         while(!gm_stream.atEnd())
         {
             QString aop = gm_stream.readLine();
-            qDebug() << aop;
             amountOfPlayers = aop.toInt();
         }
 

@@ -159,7 +159,6 @@ void MainWindow::on_LoginButton_clicked()
     while(!in.atEnd() && !in2.atEnd()){
         pass[m] = in.readLine();
         user[m] = in2.readLine();
-        //qDebug() << user[m] << pass[m] << endl;
         m++;
     }
         myfile.close();
