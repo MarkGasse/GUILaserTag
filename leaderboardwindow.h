@@ -37,6 +37,7 @@ private:
     QListWidgetItem lb_item;
     Back_End *B;
     bool gameIsRunning = 0;
+    QString game_time;
 
 private slots:
 

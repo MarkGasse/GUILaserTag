@@ -38,6 +38,7 @@ private:
     QTimer *timer_update;
     QString status = "not searching";
     Back_End *B;
+    bool foundPlayers = 0;
 
 
 private slots:

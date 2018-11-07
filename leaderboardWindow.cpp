@@ -49,13 +49,19 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     int w = rec.width();
     int h = rec.height();
 
+    for(auto & c : clients)
+    {
+        c.kills = 0;
+        c.deaths = 0;
+    }
+
     ui->CloseGUI->setGeometry(w-50,0,50,50);
     ui->pushButtonBack->setGeometry(150,0,150,50);
     ui->pushButtonBACK2->setGeometry(0,0,150,50);
     ui->Label_date->setGeometry(w-400,0,350,50);
     ui->labelTopBar->setGeometry(0,0,w,50);
     ui->groupBox->setGeometry(w/2+250,h/2-430,625,950);
-    ui->groupBox_2->setGeometry(w/2-235,60,470,80);
+    ui->groupBox_2->setGeometry(w/2-235,260,470,80);
     ui->groupBoxGIF->setGeometry(w/2-850,h/2-430,570,400);
     ui->label->setGeometry(20,20,530,360);
     ui->groupBoxEvents->setGeometry(w/2-850,h/2,570,500);
@@ -91,7 +97,6 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
 
 
     QFile gm(game_mode);
-    QString game_time;
     QString game_name;
     QString game_Titel;
     QString game_playerHP;
@@ -100,6 +105,7 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
 
     ui->labelGM->setText(game_name);
 
+    //read game mode info into variables
     QTextStream gm_stream(&gm);
     while(!gm_stream.atEnd())
     {
@@ -117,9 +123,12 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
 
     ui->timeEdit->setTime(QTime(0, minutes, 0));
 
+    //connects functions to clocked timers
     connect (timer1, SIGNAL(timeout()),this,SLOT(timerupdater()));
     connect (timer1, SIGNAL(timeout()), this, SLOT(updateLB()));
     connect(timer2, SIGNAL(timeout()),this,SLOT(stopAnimation()));
+
+    ui->pushButtonBack->hide();
 
 }
 
@@ -130,10 +139,10 @@ leaderboardWindow::~leaderboardWindow() {
 void leaderboardWindow::writeToEventBox(QString message, QString textColor, QString type)
 {
     ui->textBrowserEvents->setTextColor(textColor);
-    //QString boldtext = "<b>" + type + message + "</b>";
     ui->textBrowserEvents->append((type + message));
 }
 
+//Game start button
 void leaderboardWindow::on_pushButton_3_clicked()
 {
     auto current_time = ui->timeEdit->time();
@@ -141,8 +150,6 @@ void leaderboardWindow::on_pushButton_3_clicked()
     {
         return;
     }
-
-
 
     if(gameStarted == 1)
     {
@@ -155,6 +162,7 @@ void leaderboardWindow::on_pushButton_3_clicked()
 
 }
 
+//game stop button
 void leaderboardWindow::on_pushButton_4_clicked()
 {
     if(gameStarted == 0)
@@ -162,33 +170,37 @@ void leaderboardWindow::on_pushButton_4_clicked()
         //do timer stuff
         timer1->stop();
         timer2->stop();
-        writeToEventBox("game is paused!","purple","GUI: ");
+        writeToEventBox("game stopped!","red","GUI: ");
         gameStarted = 1;
         gameIsRunning = 0;
+        int minutes = game_time.toInt();
+        ui->timeEdit->setTime(QTime(0, minutes, 0));
     }
 
 }
 
+//function that calculates and updates stuff for the leaderboard, every 1000ms
 void leaderboardWindow::updateLB()
 {
-    S.listenNewClients();
-
-    auto m = msg("CMD:9,0;");
-    S.sendAll(m);
-
     static std::vector<player> players;
 
     for(int i = 0; i < S.maxClients; i++)
     {
         if(S.clients[i].con)
         {
-            QString name = "player";
-            name.append(QString("%1").arg(i));
-            int k = 10;             //S.clients[i].kills
-            int d = 5;              //S.clients[i].deaths
-            int p = ((k/d)*100);
+            const char *ch_name = S.clients[i].name.c_str();
+            QString qstr_name = ch_name;
 
-            player pl = {name, k, d, p};
+            int k = S.clients[i].kills;
+            int d = S.clients[i].deaths;
+            int p = k*100 - d*100;
+
+            if(p < 0)
+            {
+                p = 0;
+            }
+
+            player pl = {qstr_name, k, d, p};
             players.push_back(pl);
         }
     }
@@ -225,6 +237,7 @@ void leaderboardWindow::updateLB()
         pos++;
     }
     players.clear();
+    S.receiveCli();
 }
 
 void leaderboardWindow::timerupdater() {
@@ -259,8 +272,10 @@ void leaderboardWindow::on_pushButtonBack_clicked()
         return;
     }
 
+    S.gameOver();
     SearchPlayerWindow *SPW;
     SPW = new SearchPlayerWindow();
+
     SPW->showFullScreen();
     close();
 }

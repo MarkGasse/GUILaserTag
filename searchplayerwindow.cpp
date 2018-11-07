@@ -79,14 +79,40 @@ void SearchPlayerWindow::doNetworkStuff()
 {
     S.listenNewClients();
 
-    qDebug() << S.clients[0].con;
+//    if(S.start == true)
+//    {
+//        ui->textBrowserS->append("All players are already connected.");
+//        timer_update->stop();
+//        foundPlayers = true;
+//        return;
+//    }
 
-    if(!S.start && S.clients[0].con)
+    bool allConnected = true;
+    for(int i = 0; i < S.maxClients; i++)
+    {
+        qDebug() << S.clients[i].con;
+        if(S.clients[i].con == false)
+        {
+            allConnected = false;
+            return;
+        }
+    }
+
+    if(S.start)
+    {
+        ui->textBrowserS->append("All players already connected.");
+        timer_update->stop();
+        foundPlayers = true;
+        return;
+    }
+
+    if(!S.start && allConnected)
     {
         ui->textBrowserS->append("All players connected.");
         S.startGame();
         S.start = true;
         status = "not searching";
+        foundPlayers = true;
         timer_update->stop();
     }
 }
@@ -107,17 +133,17 @@ void SearchPlayerWindow::on_pushButtonStopS_clicked()
 {
     if(status != "not searching")
     {
-       ui->textBrowserS->setTextColor("Red");
-       ui->textBrowserS->append("..... stop searching for players");
-       status = "not searching";
        timer_update->stop();
+       ui->textBrowserS->setTextColor("Red");
+       ui->textBrowserS->append("..... stopped searching for players.");
+       status = "not searching";
     }
 
 }
 
 void SearchPlayerWindow::on_pushButtonStart_clicked()
 {
-    if(status == "not searching")
+    if(status == "not searching" || foundPlayers)
     {
         close();
         lbw = new leaderboardWindow();
@@ -126,7 +152,7 @@ void SearchPlayerWindow::on_pushButtonStart_clicked()
     }
     else
     {
-        QMessageBox::warning(this,tr("Searching!"),tr("Can't start game while looking for players!"),QMessageBox::Ok);
+        QMessageBox::warning(this,tr("Error"),tr("Can't start game without players."),QMessageBox::Ok);
     }
 
 }
