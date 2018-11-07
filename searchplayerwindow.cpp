@@ -154,6 +154,7 @@ void SearchPlayerWindow::on_pushButtonStart_clicked()
     }
 }
 
+//back to game mode selection button
 void SearchPlayerWindow::on_pushButton_clicked()
 {
     close();

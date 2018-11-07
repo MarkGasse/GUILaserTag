@@ -299,6 +299,8 @@ void leaderboardWindow::on_pushButtonBack_clicked()
     close();
 }
 
+
+//back to game mode selection button
 void leaderboardWindow::on_pushButtonBACK2_clicked()
 {
     if(gameIsRunning)
@@ -306,6 +308,9 @@ void leaderboardWindow::on_pushButtonBACK2_clicked()
         QMessageBox::warning(this,tr("ERROR "),tr("Please stop the game."),QMessageBox::Ok);
         return;
     }
+
+    S.~tcpServer();
+    new(&S)tcpServer("8080", clients, amountOfPlayers);
 
     StartWindow *SW;
     SW = new StartWindow();
