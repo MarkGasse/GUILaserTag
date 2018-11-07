@@ -23,6 +23,7 @@
 #include "QCloseEvent"
 
 extern QString game_mode;
+extern int amountOfPlayers;
 
 namespace Ui {
 class MainWindow;

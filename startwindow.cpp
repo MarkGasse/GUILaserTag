@@ -17,8 +17,6 @@ StartWindow::StartWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
-
     // get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect rec = screen->geometry();
@@ -98,6 +96,17 @@ void StartWindow::on_pushButtonStart_clicked()
 
         game_mode = selectedItem;
 
+        QFile gm(game_mode);
+        gm.open(QIODevice::ReadOnly);
+        QTextStream gm_stream(&gm);
+        while(!gm_stream.atEnd())
+        {
+            QString aop = gm_stream.readLine();
+            qDebug() << aop;
+            amountOfPlayers = aop.toInt();
+        }
+
+
         close();
         searchW = new SearchPlayerWindow();
         searchW->showFullScreen();
@@ -137,8 +146,8 @@ void StartWindow::on_pushButtonDelete_clicked()
         else
         {
             std::string file_to_remove = item.toStdString();
-            //const char *f = file_to_remove.c_str();
-            //if(std::remove(f)) qDebug() << "deleted";
+            const char *f = file_to_remove.c_str();
+            if(std::remove(f)) qDebug() << "deleted";
         }
     }
         file.close(); //close gamemodes, tmp and gamemodes now both closed

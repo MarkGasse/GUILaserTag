@@ -13,6 +13,7 @@
 #include "QKeyEvent"
 
 QString game_mode = " ";
+int amountOfPlayers = 0;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

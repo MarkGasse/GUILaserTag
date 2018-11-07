@@ -21,6 +21,8 @@ namespace Ui {
 class StartWindow;
 }
 
+extern int amountOfPlayers;
+
 /// \brief
 /// StartWindow class
 /// \details

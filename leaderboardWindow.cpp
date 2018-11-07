@@ -19,6 +19,8 @@
 #include "../lasergameServerClass/tcpServer.hpp"
 #include "searchplayerwindow.h"
 
+std::vector<std::string> killedbylog = {};
+
 struct player
 {
     QString name;
@@ -100,6 +102,7 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     QString game_name;
     QString game_Titel;
     QString game_playerHP;
+    QString game_players;
 
     gm.open(QIODevice::ReadOnly);
 
@@ -113,6 +116,7 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
         game_name = gm_stream.readLine();
         game_time = gm_stream.readLine();
         game_playerHP = gm_stream.readLine();
+        game_players = gm_stream.readLine();
     }
 
     ui->labelGM->setText(game_name);
@@ -238,6 +242,14 @@ void leaderboardWindow::updateLB()
     }
     players.clear();
     S.receiveCli();
+
+    for(auto & s : killedbylog)
+    {
+        QString si = s.c_str();
+        writeToEventBox(si,"yellow", "Arduino: ");
+        setAnimation(1);
+    }
+    killedbylog.clear();
 }
 
 void leaderboardWindow::timerupdater() {
@@ -260,6 +272,10 @@ void leaderboardWindow::timerupdater() {
         timer1->stop();
     }
 
+    if(seconds == 0 && minutes == 1)
+    {
+        S.oneMinuteLeft();
+    }
 
     ui->timeEdit->setTime(QTime(0, minutes, seconds));
 }

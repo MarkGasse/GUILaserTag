@@ -9,14 +9,20 @@
 #include "QMessageBox"
 //#include "../lasergameServerClass/tcpServer.hpp"
 
+extern int amountOfPlayers;
+
 client clients[6];
-tcpServer S = tcpServer("8080", clients, 1);
+tcpServer S = tcpServer("8080", clients, amountOfPlayers);
 
 SearchPlayerWindow::SearchPlayerWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::SearchPlayerWindow)
 {
     ui->setupUi(this);
+
+    S.maxClients = amountOfPlayers;
+    qDebug() << S.maxClients;
+
 
     // get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -56,6 +62,7 @@ SearchPlayerWindow::SearchPlayerWindow(QWidget *parent) :
     int LogoHeight=  ui->labelLogo->height();
     ui->labelLogo->setPixmap(LogoPix.scaled(LogoWidth,LogoHeight,Qt::KeepAspectRatio));
 
+
     //timer
     timer_update = new QTimer();
     connect(timer_update, SIGNAL(timeout()),this,SLOT(timerFunction()));
@@ -78,14 +85,6 @@ void SearchPlayerWindow::timerFunction()
 void SearchPlayerWindow::doNetworkStuff()
 {
     S.listenNewClients();
-
-//    if(S.start == true)
-//    {
-//        ui->textBrowserS->append("All players are already connected.");
-//        timer_update->stop();
-//        foundPlayers = true;
-//        return;
-//    }
 
     bool allConnected = true;
     for(int i = 0; i < S.maxClients; i++)
