@@ -108,7 +108,6 @@ void SearchPlayerWindow::doNetworkStuff()
     if(!S.start && allConnected)
     {
         ui->textBrowserS->append("All players connected.");
-        S.startGame();
         S.start = true;
         status = "not searching";
         foundPlayers = true;
@@ -153,7 +152,6 @@ void SearchPlayerWindow::on_pushButtonStart_clicked()
     {
         QMessageBox::warning(this,tr("Error"),tr("Can't start game without players."),QMessageBox::Ok);
     }
-
 }
 
 void SearchPlayerWindow::on_pushButton_clicked()

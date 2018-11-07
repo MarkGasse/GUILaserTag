@@ -162,6 +162,7 @@ void leaderboardWindow::on_pushButton_3_clicked()
         timer1->start(1000);
          gameStarted = 0;
         gameIsRunning = 1;
+        S.startGame();
     }
 
 }
@@ -179,6 +180,7 @@ void leaderboardWindow::on_pushButton_4_clicked()
         gameIsRunning = 0;
         int minutes = game_time.toInt();
         ui->timeEdit->setTime(QTime(0, minutes, 0));
+        S.gameOver();
     }
 
 }
@@ -270,6 +272,7 @@ void leaderboardWindow::timerupdater() {
         writeToEventBox("game has ended!","red","GUI: ");
         gameIsRunning = 0;
         timer1->stop();
+        S.gameOver();
     }
 
     if(seconds == 0 && minutes == 1)
