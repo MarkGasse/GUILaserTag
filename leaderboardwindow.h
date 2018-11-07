@@ -33,7 +33,7 @@ private:
     QString Animations[3];
     int arrayPos = 0;
     QMovie *GIF = new QMovie("");
-    bool gameStarted = 1;
+    bool gameStarted = 0;
     QListWidgetItem lb_item;
     Back_End *B;
     bool gameIsRunning = 0;

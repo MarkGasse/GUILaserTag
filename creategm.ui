@@ -120,6 +120,20 @@
      </layout>
     </item>
     <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_8">
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>DPS:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBoxDPS"/>
+      </item>
+     </layout>
+    </item>
+    <item>
      <layout class="QHBoxLayout" name="horizontalLayout_6">
       <item>
        <widget class="QLabel" name="label_4">
@@ -129,7 +143,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEditPlayers"/>
+       <widget class="QComboBox" name="comboBox_2"/>
       </item>
      </layout>
     </item>

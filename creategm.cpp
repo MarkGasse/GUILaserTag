@@ -18,8 +18,8 @@ CreateGM::CreateGM(QWidget *parent) :
     ui->comboBoxMode->setStyleSheet("background-color: white");
     ui->comboBoxTime->setStyleSheet("background-color: white");
     ui->comboBoxHP->setStyleSheet("background-color: white");
-    ui->lineEditPlayers->setStyleSheet("background-color: white");
-    ui->lineEditPlayers->setGeometry(121, 5, 117, 24);
+    ui->comboBoxDPS->setStyleSheet("background-color: white");
+    ui->comboBox_2->setStyleSheet("background-color: white");
 
     //set gamemodes
     ui->comboBoxMode->addItem("FreeForAll");
@@ -33,6 +33,18 @@ CreateGM::CreateGM(QWidget *parent) :
     ui->comboBoxHP->addItem(QString::number(1));
     for(int h = 50; h <= 500; h+= 50){
         ui->comboBoxHP->addItem(QString::number(h));
+    }
+
+    //set damage points
+    for(int dmg = 10; dmg <= 100; dmg+=10 )
+    {
+        ui->comboBoxDPS->addItem(QString::number(dmg));
+    }
+
+    //set nr of players
+    for(int p = 1; p <= 10; p++)
+    {
+        ui->comboBox_2->addItem(QString::number(p));
     }
 
 }
@@ -53,14 +65,15 @@ void CreateGM::on_pushButtonCreate_clicked()
     QString time     = ui->comboBoxTime->currentText();
     QString HP       = ui->comboBoxHP->currentText();
     QString fileName = ui->lineEditName->text();
-    QString nrofplayers = ui->lineEditPlayers->text();
+    QString nrofplayers = ui->comboBox_2->currentText();
+    QString deeps   = ui->comboBoxDPS->currentText();
 
-    QString array[5] = {fileName,mode,time,HP, nrofplayers};
+    QString array[6] = {fileName,mode,time,HP, nrofplayers, deeps};
 
     if(fileName != "")
     {
         MainWindow W;
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 6; i++)
         {
              W.write(fileName,array[i],1);
         }
