@@ -72,6 +72,8 @@ private slots:
     /// Terminates the entire application by calling QtApplication::quit() .
     void on_CloseGUI_clicked();
 
+    void on_pushButtonPlayers_clicked();
+
 public:
     /// \brief
     /// searchPlayerWindow constructor.

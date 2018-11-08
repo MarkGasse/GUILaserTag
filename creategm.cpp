@@ -31,7 +31,7 @@ CreateGM::CreateGM(QWidget *parent) :
 
     //set Health points
     ui->comboBoxHP->addItem(QString::number(1));
-    for(int h = 50; h <= 500; h+= 50){
+    for(int h = 100; h <= 500; h+= 50){
         ui->comboBoxHP->addItem(QString::number(h));
     }
 
@@ -68,7 +68,7 @@ void CreateGM::on_pushButtonCreate_clicked()
     QString nrofplayers = ui->comboBox_2->currentText();
     QString deeps   = ui->comboBoxDPS->currentText();
 
-    QString array[6] = {fileName,mode,time,HP, nrofplayers, deeps};
+    QString array[6] = {fileName,mode,time,HP, deeps, nrofplayers};
 
     if(fileName != "")
     {

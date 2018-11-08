@@ -37,7 +37,7 @@ SearchPlayerWindow::SearchPlayerWindow(QWidget *parent) :
     ui->Titel->setGeometry(w/2-175,h/2-350,350,100);
     ui->Group->setGeometry(w/2-175,h/2-250,360,100);
     ui->labelLogo->setGeometry(w/2-275,h/2-350,100,100);
-    ui->groupBoxSearch->setGeometry(w/2-160,h/2-110,320,300);
+    ui->groupBoxSearch->setGeometry(w/2-160,h/2-110,320,330);
 
     //set background color window
     this->setStyleSheet("background-color: white;");
@@ -87,7 +87,6 @@ void SearchPlayerWindow::doNetworkStuff()
     bool allConnected = true;
     for(int i = 0; i < S.maxClients; i++)
     {
-        qDebug() << clients[i].con;
         if(S.clients[i].con == false)
         {
             allConnected = false;
@@ -110,6 +109,14 @@ void SearchPlayerWindow::doNetworkStuff()
         status = "not searching";
         foundPlayers = true;
         timer_update->stop();
+
+        for(int i = 0; i < S.maxClients; i++)
+        {
+            std::string str_name = S.clients[i].name;
+            QString name = str_name.c_str();
+            qDebug() << name;
+            ui->comboBoxPlayers->addItem(name);
+        }
     }
 }
 
@@ -155,6 +162,9 @@ void SearchPlayerWindow::on_pushButtonStart_clicked()
 //back to game mode selection button
 void SearchPlayerWindow::on_pushButton_clicked()
 {
+    S.~tcpServer();
+    new(&S)tcpServer("8080", clients, amountOfPlayers);
+
     close();
     StartWindow *SW;
     SW = new StartWindow();
@@ -162,7 +172,33 @@ void SearchPlayerWindow::on_pushButton_clicked()
     SW->showFullScreen();
 }
 
+
+
 void SearchPlayerWindow::on_CloseGUI_clicked()
 {
     QApplication::quit();
+}
+
+void SearchPlayerWindow::on_pushButtonPlayers_clicked()
+{
+    QString player_to_set = ui->comboBoxPlayers->currentText();
+    QString get_name = ui->lineEditPlayers->text();
+
+    std::string str_get_name = get_name.toStdString();
+
+    for(auto & c : S.clients)
+    {
+        std::string name_to_compare = player_to_set.toStdString();
+        if(c.name == name_to_compare)
+        {
+            c.name = str_get_name;
+            ui->textBrowserS->append(player_to_set + " renamed to " + get_name + ".");
+
+            ui->comboBoxPlayers->setCurrentText(get_name);
+            ui->comboBoxPlayers->update();
+
+        }
+    }
+
+    ui->comboBoxPlayers->update();
 }

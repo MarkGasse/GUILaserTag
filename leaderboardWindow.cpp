@@ -102,8 +102,8 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
         game_name = gm_stream.readLine();
         game_time = gm_stream.readLine();
         game_playerHP = gm_stream.readLine();
-        game_players = gm_stream.readLine();
         game_deeps = gm_stream.readLine();
+        game_players = gm_stream.readLine();
     }
 
     ui->labelGM->setText(game_name);

@@ -120,8 +120,8 @@
      <rect>
       <x>370</x>
       <y>50</y>
-      <width>261</width>
-      <height>301</height>
+      <width>321</width>
+      <height>331</height>
      </rect>
     </property>
     <property name="title">
@@ -175,6 +175,45 @@
        <widget class="QPushButton" name="pushButtonStart">
         <property name="text">
          <string>Start Game</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>290</y>
+       <width>301</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QComboBox" name="comboBoxPlayers">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEditPlayers">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonPlayers">
+        <property name="text">
+         <string>set name</string>
         </property>
        </widget>
       </item>
