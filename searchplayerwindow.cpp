@@ -153,14 +153,7 @@ void SearchPlayerWindow::on_pushButtonStart_clicked()
 {
     if(status == "not searching" && foundPlayers)
     {
-        msg m;
-        m.command = T_PLAYER_NAME;
-        for (int i = 0; i < S.maxClients; i++)
-        {
-            m.naam = S.clients[i].name;
-            S.sendCli(clients[i].c, m);
-        }
-
+        S.sendNames();
         timer_timefunc->stop();
         close();
         lbw = new leaderboardWindow();
