@@ -36,6 +36,7 @@ private:
     Ui::SearchPlayerWindow *ui;
     leaderboardWindow *lbw;
     QTimer *timer_update;
+    QTimer *timer_timefunc;
     QString status = "not searching";
     Back_End *B;
     bool foundPlayers = 0;

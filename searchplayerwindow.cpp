@@ -66,8 +66,10 @@ SearchPlayerWindow::SearchPlayerWindow(QWidget *parent) :
 
     //timer
     timer_update = new QTimer();
-    connect(timer_update, SIGNAL(timeout()),this,SLOT(timerFunction()));
+    timer_timefunc = new QTimer();
+    connect(timer_timefunc, SIGNAL(timeout()),this,SLOT(timerFunction()));
     connect(timer_update, SIGNAL(timeout()),this,SLOT(doNetworkStuff()));
+    timer_timefunc->start(1000);
 }
 
 SearchPlayerWindow::~SearchPlayerWindow()
@@ -159,6 +161,7 @@ void SearchPlayerWindow::on_pushButtonStart_clicked()
             S.sendCli(clients[i].c, m);
         }
 
+        timer_timefunc->stop();
         close();
         lbw = new leaderboardWindow();
         lbw->showFullScreen();
@@ -206,7 +209,8 @@ void SearchPlayerWindow::on_pushButtonPlayers_clicked()
             ui->textBrowserS->append(player_to_set + " renamed to " + get_name + ".");
 
         }
-    }
-
-    ui->comboBoxPlayers->update();
+    }    
+    int index = ui->comboBoxPlayers->findText(player_to_set);
+    ui->comboBoxPlayers->removeItem(index);
+    ui->comboBoxPlayers->addItem(get_name);
 }
