@@ -194,9 +194,6 @@ void SearchPlayerWindow::on_pushButtonPlayers_clicked()
             c.name = str_get_name;
             ui->textBrowserS->append(player_to_set + " renamed to " + get_name + ".");
 
-            ui->comboBoxPlayers->setCurrentText(get_name);
-            ui->comboBoxPlayers->update();
-
         }
     }
 
