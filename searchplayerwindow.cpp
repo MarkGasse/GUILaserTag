@@ -53,6 +53,9 @@ SearchPlayerWindow::SearchPlayerWindow(QWidget *parent) :
     ui->pushButtonSearch->setStyleSheet("background-color: lightBlue");
     ui->pushButtonStopS->setStyleSheet("background-color: Red");
     ui->pushButton->setStyleSheet("background-color: lightGray");
+    ui->pushButtonPlayers->setStyleSheet("background-color: lightBlue");
+    ui->comboBoxPlayers->setStyleSheet("background-color: lightBlue");
+    ui->lineEditPlayers->setStyleSheet("background-color: lightBlue");
 
     //adding logo to labelLogo
     QPixmap LogoPix(":/resource/image/LogoLaser.jpg");
@@ -146,8 +149,16 @@ void SearchPlayerWindow::on_pushButtonStopS_clicked()
 
 void SearchPlayerWindow::on_pushButtonStart_clicked()
 {
-    if(status == "not searching" || foundPlayers)
+    if(status == "not searching" && foundPlayers)
     {
+        msg m;
+        m.command = T_PLAYER_NAME;
+        for (int i = 0; i < S.maxClients; i++)
+        {
+            m.naam = S.clients[i].name;
+            S.sendCli(clients[i].c, m);
+        }
+
         close();
         lbw = new leaderboardWindow();
         lbw->showFullScreen();
