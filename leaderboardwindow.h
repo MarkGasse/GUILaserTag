@@ -117,6 +117,7 @@ public:
 
     QTimer *timer1;
     QTimer *timer2;
+    QTimer *WiFiPollTime;
 };
 
 #endif // LEADERBOARDWINDOW_H
