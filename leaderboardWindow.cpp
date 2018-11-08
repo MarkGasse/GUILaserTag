@@ -38,6 +38,7 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
 
     timer1 = new QTimer();
     timer2 = new QTimer();
+    WiFiPollTime = new QTimer();
 
     //setting gifs in array
     Animations[0] = (":/AnimationEnd/AnimationEnd/schieten 2 (1).gif");
@@ -130,7 +131,7 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
 
     //connects functions to clocked timers
     connect (timer1, SIGNAL(timeout()),this,SLOT(timerupdater()));
-    connect (timer1, SIGNAL(timeout()), this, SLOT(updateLB()));
+    connect (WiFiPollTime, SIGNAL(timeout()), this, SLOT(updateLB()));
     connect(timer2, SIGNAL(timeout()),this,SLOT(stopAnimation()));
 }
 
@@ -159,6 +160,7 @@ void leaderboardWindow::on_pushButton_3_clicked()
         writeToEventBox("game started!","Green","GUI: ");
         setAnimation(2);
         timer1->start(1000);
+        WiFiPollTime->start(100);
          gameStarted = 1;
         gameIsRunning = 1;
         S.startGame();
