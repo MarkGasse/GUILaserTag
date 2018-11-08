@@ -227,7 +227,7 @@ void leaderboardWindow::updateLB()
 
     int count = ui->listWidgetLeaderboard->count();
     for(int i = 0; i < count; i++){
-        ui->listWidgetLeaderboard->takeItem(0);
+        ui->listWidgetLeaderboard->takeItem(i);
     }
     auto lbiiii = new QListWidgetItem(QIcon(":/resource/image/lb.png"), "             Name:                          K/D                         Points:       ");
     ui->listWidgetLeaderboard->addItem(lbiiii);
