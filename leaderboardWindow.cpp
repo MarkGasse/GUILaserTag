@@ -111,14 +111,15 @@ leaderboardWindow::leaderboardWindow(QWidget *parent) :
     int deeps = game_deeps.toInt();
 
     //set clients' internal info
-    for(auto & c : clients)
+    for(auto & c : S.clients)
     {
         if(c.con == 1)
         {
-            c.kills = 0;
-            c.deaths = 0;
             c.hp = playerhp;
             c.dmg = deeps;
+
+            qDebug() << c.hp;
+            qDebug() << c.dmg;
         }
     }
 
@@ -192,7 +193,7 @@ void leaderboardWindow::updateLB()
     for(int i = 0; i < S.maxClients; i++)
     {
         if(S.clients[i].con)
-        {
+        {   
             const char *ch_name = S.clients[i].name.c_str();
             QString qstr_name = ch_name;
 
