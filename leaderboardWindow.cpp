@@ -159,12 +159,12 @@ void leaderboardWindow::on_pushButton_3_clicked()
     if(gameStarted == 0)
     {
         writeToEventBox("game started!","Green","GUI: ");
-        setAnimation(2);
         timer1->start(1000);
         WiFiPollTime->start(100);
          gameStarted = 1;
         gameIsRunning = 1;
         S.startGame();
+        setAnimation(2);
     }
 }
 
@@ -184,6 +184,7 @@ void leaderboardWindow::on_pushButton_4_clicked()
         ui->timeEdit->setTime(QTime(0, minutes, 0));
         //send GameOver to clients
         S.gameOver();
+        setAnimation(0);
     }
 }
 
@@ -267,16 +268,18 @@ void leaderboardWindow::timerupdater()
         seconds--;
     }
 
-    if(seconds == 0 && minutes == 0) {
-        setAnimation(0);
+    if(seconds == 0 && minutes == 0)
+    {
         writeToEventBox("game has ended!","red","GUI: ");
         gameIsRunning = 0;
         timer1->stop();
         S.gameOver();
+        setAnimation(0);
     }
 
     if(seconds == 0 && minutes == 1)
     {
+        writeToEventBox("One minute remaining!", "purple", "GUI: ");
         S.oneMinuteLeft();
     }
 
